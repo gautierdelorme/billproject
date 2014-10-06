@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace billproject
 {
-	public class StoreBill// : Bill<StoreBill>,IArticle<StoreBill>
+	public class StoreBill : Bill<StoreBill>,IArticle<StoreBill>
 	{
-		/*
+
 		public StoreBill(bool a)
 		{
 			int id = 0;
@@ -126,7 +126,7 @@ namespace billproject
 
 		}
 
- */
+ 
 	}
 }
 
