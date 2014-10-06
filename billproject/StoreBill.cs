@@ -28,10 +28,16 @@ namespace billproject
 		public override void PrintArticles()
 		{
 			Console.WriteLine ("*************** Articles ***************");
-			foreach (Article art in Articles)
-			{
-				Console.WriteLine(art);
+			double totalAmountWithoutTaxes = 0;
+			double totalAmountWithTaxes = 0;
+
+			foreach (Article article in Articles) {
+				Console.WriteLine (article);
+				totalAmountWithoutTaxes += article.TotalAmoutWithoutTaxes();
+				totalAmountWithTaxes += article.TotalAmoutWithTaxes ();
 			}
+			Console.WriteLine ("Total without taxes : "+ totalAmountWithoutTaxes);
+			Console.WriteLine ("Total with taxes : "+ totalAmountWithTaxes);
 		}
 
 		public override void CopyFrom(StoreBill bill)
