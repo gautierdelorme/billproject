@@ -2,34 +2,43 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace billproject
 {
-	public class StoreBill// : Bill<StoreBill>,IArticle<StoreBill>
+	public class StoreBill : Bill<StoreBill>,IArticle<StoreBill>
 	{
-		/*
-		public StoreBill()
+
+		public StoreBill(bool s)
 		{
-			int id = Directory.GetFiles (Path.Combine (Directory.GetCurrentDirectory (), "StoreBills/"), "*", SearchOption.TopDirectoryOnly).Length + 1;
+			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"StoreBills"));
+			FileInfo[] files = directory.GetFiles();
+
+			int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
 			Id = id;
 			Articles = new List<Article> ();
+
+			if (s)
+				Save ();
 		}
 		/// <summary>
 		/// Print all bills' articles
 		/// </summary>
-		public void PrintArticles()
+		public override void PrintArticles()
 		{
+			Console.WriteLine ("*************** Articles ***************");
 			foreach (Article art in Articles)
 			{
 				Console.WriteLine(art);
 			}
 		}
 
-		public void CopyFrom(StoreBill bill)
+		public override void CopyFrom(StoreBill bill)
 		{
 			Articles = bill.Articles;
 		}
-
+		/*
 		protected override StoreBill Addition (StoreBill bill) {
 			StoreBill finalBill;
 			if (!Articles.Any()) {
@@ -59,17 +68,16 @@ namespace billproject
 			}
 			return finalBill;
 		}
+		*/
 
 		/// <summary>
 		/// Create a new article
 		/// </summary>
 		/// <returns></returns>
 
-        public Article CreateArticle(string artName,int quantity, double price, Article.typeTaxes typeTaxeName )
-        {
-			return new Article (artName, quantity, price, typeTaxeName);
-            
-        }
+		public void CreateArticle (string item,int quantity, double price, Article.typeTaxes typeTaxe) {
+			AddArticle(new Article (item, quantity, price, typeTaxe));
+		}
 
 		/// <summary>
 		/// Add an article to the bill
@@ -83,46 +91,39 @@ namespace billproject
 		/// Remove an article from the bill
 		/// </summary>
 		/// <param name="artName">Article name</param>
-		public void RemoveArticle(string artName)
+		public void RemoveArticle(Article art)
 		{
-			if (Articles==null)
-			{
-				Console.WriteLine("Your bill is empty");
-			}
-			else
-			{
-				Article result= Articles.Find(x => x.Item==artName);
-				if (result==null)
-				{
-					Console.WriteLine("Your bill does'nt contain any article named :"+artName);
-				}
-				else
-				{
-					Articles.Remove(result);
-				}
-
-			}
+			Articles.Remove (art);
 		}
 		/// <summary>
 		/// Return an int which contain the number of bill's article
 		/// </summary>
 		/// <returns></returns>
-		public int NbArticles()
+		public int NbArticle()
 		{
 			return Articles.Count;
 		}
 
-		public void Save(StoreBill bill)
+		public void Save()
 		{
-
+			using (StreamWriter file = File.CreateText(Path.Combine (Directory.GetCurrentDirectory (),"StoreBills", Id+".txt")))
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				serializer.Serialize(file, Articles);
+			}
 		}
 
-		public void Load (StoreBill bill)
+		public void Load (int id)
 		{
-
+			using (StreamReader file = File.OpenText(Path.Combine (Directory.GetCurrentDirectory (),"StoreBills", id+".txt")))
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				Id = id;
+				Articles = (List<Article>)serializer.Deserialize(file, typeof(List<Article>));
+			}
 		}
 
- */
+ 
 	}
 }
 
