@@ -3,3 +3,9 @@
 /Users/gautier/Documents/Dev/csharp/billproject/billproject/bin/Debug/billproject.exe
 /Users/gautier/Documents/Dev/csharp/billproject/billproject/obj/x86/Debug/billproject.exe
 /Users/gautier/Documents/Dev/csharp/billproject/billproject/obj/x86/Debug/billproject.exe.mdb
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/bin/Debug/Newtonsoft.Json.dll
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/bin/Debug/billproject.exe.mdb
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/bin/Debug/billproject.exe
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/obj/x86/Debug/billproject.exe
+/Users/Solo/Desktop/Programmation/ProjetFacture/billproject/obj/x86/Debug/billproject.exe.mdb

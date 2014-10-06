@@ -7,7 +7,11 @@ namespace billproject
 {
 	public class SchoolBill : Bill<SchoolBill>, IArticle<SchoolBill>
 	{
-		public SchoolBill () : base() {
+		public SchoolBill()
+		{
+			int id = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"),"*", SearchOption.TopDirectoryOnly).Length;
+			//Id = id;
+			Articles = new List<Article> ();
 		}
 
 		public override void PrintArticles () {
@@ -20,6 +24,7 @@ namespace billproject
 		public override void CopyFrom(SchoolBill bill) {
 			Articles = bill.Articles;
 		}
+		/*
 
 		protected override SchoolBill Addition (SchoolBill bill) {
 			SchoolBill finalBill;
@@ -50,7 +55,7 @@ namespace billproject
 			}
 			return finalBill;
 		}
-
+ */
 		public Article CreateArticle (string item,int quantity, double price, Article.typeTaxes typeTaxe) {
 			return new Article (item, quantity, price, typeTaxe);
 		}

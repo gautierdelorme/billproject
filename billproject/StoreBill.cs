@@ -1,12 +1,22 @@
 ﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace billproject
 {
-	public class StoreBill //: Bill,IArticle
+	public class StoreBill// : Bill<StoreBill>,IArticle<StoreBill>
 	{
-		/*public StoreBill():base()
+		/*
+		public StoreBill(bool a)
 		{
-
+			int id = 0;
+			if (a)
+			{
+				id = Directory.GetFiles (Path.Combine (Directory.GetCurrentDirectory (), "StoreBills/"), "*", SearchOption.TopDirectoryOnly).Length + 1;
+			}
+			Id = id;
+			Articles = new List<Article> ();
 		}
 		/// <summary>
 		/// Print all bills' articles
@@ -24,104 +34,52 @@ namespace billproject
 			Articles = bill.Articles;
 		}
 
-		public static StoreBill operator +(StoreBill bill1,StoreBill bill2)
-		{
-			StoreBill NewBill = new StoreBill();
-
-			if (bill1.Articles==null & bill2.Articles==null)
-			{
-				NewBill.Articles = null;
-			}
-			else if (bill1.Articles == null)
-			{
-				NewBill.Articles = bill2.Articles;
-			}
-			else if (bill2.Articles == null)
-			{
-				NewBill.Articles = bill1.Articles;
-			}
-			else
-			{
-				NewBill.Articles = bill1.Articles;
-				foreach (Article artBill2 in bill2.Articles)
-				{
-
-					foreach (Article artNewBill in NewBill.Articles)
-					{
-						if (artBill2.Item==artNewBill.Item)
-						{
-							artNewBill.Price += artBill2.Price;
-							artNewBill.Quantity += artNewBill.Quantity;
-
-						}
+		protected override StoreBill Addition (StoreBill bill) {
+			StoreBill finalBill;
+			if (!Articles.Any()) {
+				finalBill = bill;
+			} else {
+				finalBill = this;
+				foreach (Article article1 in bill.Articles) {
+					foreach (Article article2 in finalBill.Articles) {
+						if (article1.Item == article2.Item)
+							finalBill.Articles[finalBill.Articles.IndexOf(article2)].Quantity = article2.Quantity + article1.Quantity;
 						else
-						{
-							NewBill.Articles.Add(artBill2);
-
-						}
-
+							finalBill.Articles.Add (article1);
 					}
 				}
 			}
-			return NewBill;
+			return finalBill;
 		}
 
-		public static StoreBill operator -(StoreBill bill1,StoreBill bill2)
-		{
-			StoreBill NewBill = new StoreBill();
-			if (bill1==null & bill2==null)
-			{
-				NewBill.Articles = null;
-			}
-			else if (bill1==null )
-			{
-				NewBill.Articles = bill2.Articles;
-			}
-			else if (bill2==null)
-			{
-				NewBill.Articles = bill1.Articles;
-			}
-			else
-			{
-				NewBill.Articles = bill1.Articles;
-				foreach(Article artBill2 in bill2.Articles)
-				{
-					foreach (Article artNewBill in NewBill.Articles)
-					{
-						if (artBill2.Item == artNewBill.Item)
-						{
-							artNewBill.Price= Math.Abs(artNewBill.Price-artBill2.Price);
-							artNewBill.Quantity= Math.Abs(artNewBill.Quantity-artBill2.Quantity);
-						}
-						else
-						{
-							NewBill.Articles.Add(artBill2);
-
-						}
-
-					}
+		protected override StoreBill Subtraction (StoreBill bill) {
+			StoreBill finalBill;
+			finalBill = this;
+			foreach (Article article1 in bill.Articles) {
+				foreach (Article article2 in finalBill.Articles) {
+					if (article1.Item == article2.Item)
+						finalBill.Articles[finalBill.Articles.IndexOf(article2)].Quantity = article2.Quantity - article1.Quantity;
 				}
 			}
-			return NewBill;
+			return finalBill;
+		}
 
-
-		}*/
 		/// <summary>
 		/// Create a new article
 		/// </summary>
 		/// <returns></returns>
-		/*
-        public Article CreateArticle(string artName,int quantity, double price, string typeTaxeName )
+
+        public Article CreateArticle(string artName,int quantity, double price, Article.typeTaxes typeTaxeName )
         {
-            
+			return new Article (artName, quantity, price, typeTaxeName);
             
         }
-        */
+
 		/// <summary>
 		/// Add an article to the bill
 		/// </summary>
 		/// <param name="art"></param>
-		/*public void AddArticle(Article art)
+		public void AddArticle(Article art)
 		{
 			Articles.Add(art);
 		}
@@ -155,8 +113,20 @@ namespace billproject
 		/// <returns></returns>
 		public int NbArticles()
 		{
-			return Articles.Count();
-		}*/
+			return Articles.Count;
+		}
+
+		public void Save(StoreBill bill)
+		{
+
+		}
+
+		public void Load (StoreBill bill)
+		{
+
+		}
+
+ */
 	}
 }
 
