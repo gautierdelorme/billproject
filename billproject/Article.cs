@@ -10,9 +10,9 @@ namespace billproject
 		public double Price { get; set; }
 		public typeTaxes Taxes { get; set; }
 
-		public Article(string name,int quantity, double price, typeTaxes typeTaxe)
+		public Article(string item,int quantity, double price, typeTaxes typeTaxe)
 		{
-			Item = name;
+			Item = item;
 			Quantity = quantity;
 			Price = price;
 			Taxes = typeTaxe;
@@ -20,7 +20,7 @@ namespace billproject
 
 		public override string ToString()
 		{
-			return Item;
+			return "Article : "+Item+", Quantity : "+Quantity+" at "+Price+"$/article with "+Taxes+" taxes.";
 		}
 	}
 }

@@ -2,14 +2,14 @@
 
 namespace billproject
 {
-	public interface IArticle
+	public interface IArticle<T>
 	{
-		Article createArticle(string item, int quantity, double price, Article.typeTaxes Taxes);
-		void addArticle(Article article);
-		void removeArticle(Article article);
-		int nbArticle();
-		void save();
-		void load(Bill bill);
+		Article CreateArticle(string item, int quantity, double price, Article.typeTaxes Taxes);
+		void AddArticle(Article article);
+		void RemoveArticle(Article article);
+		int NbArticle();
+		void Save();
+		void Load(T bill);
 	}
 }
 

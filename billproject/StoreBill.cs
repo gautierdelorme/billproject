@@ -2,9 +2,9 @@
 
 namespace billproject
 {
-	public class StoreBill : Bill,IArticle
+	public class StoreBill //: Bill,IArticle
 	{
-		public StoreBill():base()
+		/*public StoreBill():base()
 		{
 
 		}
@@ -105,7 +105,7 @@ namespace billproject
 			return NewBill;
 
 
-		}
+		}*/
 		/// <summary>
 		/// Create a new article
 		/// </summary>
@@ -121,7 +121,7 @@ namespace billproject
 		/// Add an article to the bill
 		/// </summary>
 		/// <param name="art"></param>
-		public void AddArticle(Article art)
+		/*public void AddArticle(Article art)
 		{
 			Articles.Add(art);
 		}
@@ -156,7 +156,7 @@ namespace billproject
 		public int NbArticles()
 		{
 			return Articles.Count();
-		}
+		}*/
 	}
 }
 

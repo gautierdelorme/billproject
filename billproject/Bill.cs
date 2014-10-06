@@ -5,23 +5,31 @@ using System.Linq;
 
 namespace billproject
 {
-	public class Bill
+	public abstract class Bill<T>
 	{
 		public List<Article> Articles { get; set; }
-		public enum typeTaxes { FP, F, P, O };
 		public int Id { get; private set; }
 		public Bill()
 		{
 			int id = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(),""),"*", SearchOption.TopDirectoryOnly).Length;
 			Id = id;
+			Articles = new List<Article> ();
 		}
 		public abstract void PrintArticles();
-		public abstract void CopyFrom(Bill bill);
-		/*
-        public static abstract Bill operator +(Bill bill1, Bill bill2);
-        public static abstract Bill operator -(Bill bill1, Bill bill2);
-        */
-		public void solobg();
+
+		public abstract void CopyFrom(T bill);
+
+		public static T operator +(T bill1, T bill2) {
+			return bill1.Addition (bill2);
+		}
+
+		public static T operator -(T bill1, T bill2) {
+			return bill1.Subtraction (bill2);
+		}
+
+		protected abstract T Addition (T bill);
+
+		protected abstract T Subtraction (T bill);
 	}
 }
 
