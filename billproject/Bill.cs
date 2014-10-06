@@ -8,7 +8,7 @@ namespace billproject
 	public abstract class Bill<T>
 	{
 		public List<Article> Articles { get; set; }
-		public int Id { get; private set; }
+		public int Id { get; protected set; }
 
 		public abstract void PrintArticles();
 

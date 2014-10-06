@@ -9,3 +9,4 @@
 /Users/Solo/Desktop/Programmation/ProjetFacture/billproject/bin/Debug/billproject.exe
 /Users/Solo/Desktop/Programmation/ProjetFacture/billproject/obj/x86/Debug/billproject.exe
 /Users/Solo/Desktop/Programmation/ProjetFacture/billproject/obj/x86/Debug/billproject.exe.mdb
+/Users/gautier/Documents/Dev/csharp/billproject/billproject/bin/Debug/Newtonsoft.Json.dll

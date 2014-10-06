@@ -8,13 +8,9 @@ namespace billproject
 	public class StoreBill// : Bill<StoreBill>,IArticle<StoreBill>
 	{
 		/*
-		public StoreBill(bool a)
+		public StoreBill()
 		{
-			int id = 0;
-			if (a)
-			{
-				id = Directory.GetFiles (Path.Combine (Directory.GetCurrentDirectory (), "StoreBills/"), "*", SearchOption.TopDirectoryOnly).Length + 1;
-			}
+			int id = Directory.GetFiles (Path.Combine (Directory.GetCurrentDirectory (), "StoreBills/"), "*", SearchOption.TopDirectoryOnly).Length + 1;
 			Id = id;
 			Articles = new List<Article> ();
 		}
