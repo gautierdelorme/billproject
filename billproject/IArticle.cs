@@ -9,7 +9,7 @@ namespace billproject
 		void RemoveArticle(Article article);
 		int NbArticle();
 		void Save();
-		void Load(T bill);
+		void Load(int id);
 	}
 }
 

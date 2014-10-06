@@ -2,16 +2,24 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace billproject
 {
 	public class SchoolBill : Bill<SchoolBill>, IArticle<SchoolBill>
 	{
-		public SchoolBill()
+		public SchoolBill(bool s)
 		{
-			int id = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"),"*", SearchOption.TopDirectoryOnly).Length;
-			//Id = id;
+			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"));
+			FileInfo[] files = directory.GetFiles();
+
+			int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+			Id = id;
 			Articles = new List<Article> ();
+
+			if (s)
+				Save ();
 		}
 
 		public override void PrintArticles () {
@@ -76,9 +84,20 @@ namespace billproject
 		}
 
 		public void Save () {
+			using (StreamWriter file = File.CreateText(Path.Combine (Directory.GetCurrentDirectory (),"SchoolBills", Id+".txt")))
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				serializer.Serialize(file, Articles);
+			}
 		}
 
-		public void Load (SchoolBill bill) {
+		public void Load (int id) {
+			using (StreamReader file = File.OpenText(Path.Combine (Directory.GetCurrentDirectory (),"SchoolBills", id+".txt")))
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				Id = id;
+				Articles = (List<Article>)serializer.Deserialize(file, typeof(List<Article>));
+			}
 		}
 	}
 }
