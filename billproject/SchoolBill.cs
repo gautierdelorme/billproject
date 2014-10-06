@@ -22,6 +22,20 @@ namespace billproject
 				Save ();
 		}
 
+		public SchoolBill(List<Article> articles, bool s)
+		{
+			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"));
+			FileInfo[] files = directory.GetFiles();
+
+			int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+			Id = id;
+			Articles = articles;
+
+			if (s)
+				Save ();
+		}
+
 		public override void PrintArticles () {
 			Console.WriteLine ("*************** Articles ***************");
 			foreach (Article article in Articles) {
@@ -64,8 +78,8 @@ namespace billproject
 			return finalBill;
 		}
  */
-		public Article CreateArticle (string item,int quantity, double price, Article.typeTaxes typeTaxe) {
-			return new Article (item, quantity, price, typeTaxe);
+		public void CreateArticle (string item,int quantity, double price, Article.typeTaxes typeTaxe) {
+			AddArticle (new Article (item, quantity, price, typeTaxe));
 		}
 
 		public void AddArticle(Article article) {

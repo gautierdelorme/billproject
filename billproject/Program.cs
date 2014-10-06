@@ -12,22 +12,15 @@ namespace billproject
 		{
 
 			SchoolBill sb = new SchoolBill (true);
-			sb.AddArticle (sb.CreateArticle("yo",4,23.90,Article.typeTaxes.FP));
-			sb.AddArticle (sb.CreateArticle("yo",16,23.90,Article.typeTaxes.FP));
-			sb.AddArticle (sb.CreateArticle("aight",67,3.90,Article.typeTaxes.FP));
+			sb.CreateArticle("yo",4,23.90,Article.typeTaxes.FP);
+			sb.CreateArticle("yo",16,23.90,Article.typeTaxes.P);
+			sb.CreateArticle("aight",67,3.90,Article.typeTaxes.F);
+
+			Article art = new Article ("yolo", 4, 23.90, Article.typeTaxes.FP);
+			//sb.AddArticle (art);
 			sb.PrintArticles ();
-			sb.Save();
-
-			SchoolBill sb2 = new SchoolBill (true);
-			sb2.AddArticle (sb.CreateArticle("yo",3,23.90,Article.typeTaxes.FP));
-			sb2.AddArticle (sb.CreateArticle("aight",1,23.90,Article.typeTaxes.FP));
-			sb2.AddArticle (sb.CreateArticle("wtf",32,300.90,Article.typeTaxes.FP));
-			sb2.PrintArticles ();
-			sb2.Save();
-
-			SchoolBill sb3 = new SchoolBill (false);
-			sb3.Load (1);
-			sb3.PrintArticles ();
+			sb.RemoveArticle (art);
+			sb.PrintArticles ();
 		}
 	}
 }
