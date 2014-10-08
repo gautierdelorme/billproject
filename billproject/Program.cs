@@ -16,11 +16,15 @@ namespace billproject
 			sb.CreateArticle("yo",16,23.90,Article.typeTaxes.FP);
 			sb.CreateArticle("aight",67,3.90,Article.typeTaxes.F);
 
-			Article art = new Article ("yolo", 4, 1, Article.typeTaxes.FP);
-			sb.AddArticle (art);
-			sb.PrintArticles ();
-			sb.RemoveArticle (art);
-			sb.PrintArticles ();
+            SchoolBill sb2 = new SchoolBill(true);
+            sb.CreateArticle("yoy", 4, 2.90, Article.typeTaxes.P);
+            sb.CreateArticle("yo", 10, 23.90, Article.typeTaxes.FP);
+            sb.CreateArticle("aightttt", 67, 333.90, Article.typeTaxes.F);
+
+            SchoolBill sb3 = new SchoolBill(false);
+            sb3 = (SchoolBill) ((Bill)sb2+(Bill)sb);
+
+			sb3.PrintArticles ();
 		}
 	}
 }

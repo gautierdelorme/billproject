@@ -56,8 +56,8 @@ namespace billproject
 				totalAmountWithoutTaxes += article.TotalAmoutWithoutTaxes();
 				totalAmountWithTaxes += article.TotalAmoutWithTaxes ();
 			}
-			Console.WriteLine ("Total without taxes : "+ totalAmountWithoutTaxes);
-			Console.WriteLine ("Total with taxes : "+ totalAmountWithTaxes);
+            Console.WriteLine("Total without taxes : " + totalAmountWithoutTaxes + "$");
+            Console.WriteLine("Total with taxes : " + totalAmountWithTaxes + "$");
 		}
 
 		public override void CopyFrom(Bill bill) {
