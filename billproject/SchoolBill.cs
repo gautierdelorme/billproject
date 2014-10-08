@@ -10,6 +10,11 @@ namespace billproject
 	{
 		public SchoolBill(bool s)
 		{
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
 			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"));
 			FileInfo[] files = directory.GetFiles();
 

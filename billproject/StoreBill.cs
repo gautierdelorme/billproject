@@ -11,6 +11,12 @@ namespace billproject
 
 		public StoreBill(bool s)
 		{
+
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
 			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"StoreBills"));
 			FileInfo[] files = directory.GetFiles();
 
