@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace billproject
 {
-	public class SchoolBill : Bill<SchoolBill>, IArticle<SchoolBill>
+	public class SchoolBill : Bill, IArticle
 	{
 		public SchoolBill(bool s)
 		{
@@ -29,6 +29,11 @@ namespace billproject
 
 		public SchoolBill(List<Article> articles, bool s)
 		{
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
 			DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(),@"SchoolBills"));
 			FileInfo[] files = directory.GetFiles();
 
@@ -55,13 +60,12 @@ namespace billproject
 			Console.WriteLine ("Total with taxes : "+ totalAmountWithTaxes);
 		}
 
-		public override void CopyFrom(SchoolBill bill) {
+		public override void CopyFrom(Bill bill) {
 			Articles = bill.Articles;
 		}
-		/*
 
-		protected override SchoolBill Addition (SchoolBill bill) {
-			SchoolBill finalBill;
+		protected override Bill Addition (Bill bill) {
+			Bill finalBill;
 			if (!Articles.Any ()) {
 				finalBill = bill;
 			} else {
@@ -78,8 +82,8 @@ namespace billproject
 			return finalBill;
 		}
 
-		protected override SchoolBill Subtraction (SchoolBill bill) {
-			SchoolBill finalBill;
+		protected override Bill Subtraction (Bill bill) {
+			Bill finalBill;
 			finalBill = this;
 			foreach (Article article1 in bill.Articles) {
 				foreach (Article article2 in finalBill.Articles) {
@@ -89,7 +93,7 @@ namespace billproject
 			}
 			return finalBill;
 		}
- */
+
 		public void CreateArticle (string item,int quantity, double price, Article.typeTaxes typeTaxe) {
 			AddArticle (new Article (item, quantity, price, typeTaxe));
 		}

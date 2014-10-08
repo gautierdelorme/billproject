@@ -5,27 +5,26 @@ using System.Linq;
 
 namespace billproject
 {
-	public abstract class Bill<T>
+	public abstract class Bill
 	{
 		public List<Article> Articles { get; set; }
 		public int Id { get; protected set; }
 
 		public abstract void PrintArticles();
 
-		public abstract void CopyFrom(T bill);
-		/*
-		public static T operator +(T bill1, T bill2) {
+		public abstract void CopyFrom(Bill bill);
+
+		public static Bill operator +(Bill bill1, Bill bill2) {
 			return bill1.Addition (bill2);
 		}
 
-		public static T operator -(T bill1, T bill2) {
+		public static Bill operator -(Bill bill1, Bill bill2) {
 			return bill1.Subtraction (bill2);
 		}
 
-		protected abstract T Addition (T bill);
+		protected abstract Bill Addition (Bill bill);
 
-		protected abstract T Subtraction (T bill);
-		*/
+		protected abstract Bill Subtraction (Bill bill);
 	}
 }
 

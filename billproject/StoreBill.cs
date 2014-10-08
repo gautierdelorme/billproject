@@ -6,12 +6,11 @@ using Newtonsoft.Json;
 
 namespace billproject
 {
-	public class StoreBill : Bill<StoreBill>,IArticle<StoreBill>
+	public class StoreBill : Bill,IArticle
 	{
 
 		public StoreBill(bool s)
 		{
-
             string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
 
             if (!Directory.Exists(subPath))
@@ -28,6 +27,26 @@ namespace billproject
 			if (s)
 				Save ();
 		}
+
+        public StoreBill(List<Article> articles, bool s)
+        {
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+
+            int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            Id = id;
+            Articles = articles;
+
+            if (s)
+                Save();
+        }
+
 		/// <summary>
 		/// Print all bills' articles
 		/// </summary>
@@ -46,13 +65,13 @@ namespace billproject
 			Console.WriteLine ("Total with taxes : "+ totalAmountWithTaxes);
 		}
 
-		public override void CopyFrom(StoreBill bill)
+		public override void CopyFrom(Bill bill)
 		{
 			Articles = bill.Articles;
 		}
-		/*
-		protected override StoreBill Addition (StoreBill bill) {
-			StoreBill finalBill;
+		
+		protected override Bill Addition (Bill bill) {
+			Bill finalBill;
 			if (!Articles.Any()) {
 				finalBill = bill;
 			} else {
@@ -69,8 +88,8 @@ namespace billproject
 			return finalBill;
 		}
 
-		protected override StoreBill Subtraction (StoreBill bill) {
-			StoreBill finalBill;
+		protected override Bill Subtraction (Bill bill) {
+			Bill finalBill;
 			finalBill = this;
 			foreach (Article article1 in bill.Articles) {
 				foreach (Article article2 in finalBill.Articles) {
@@ -80,7 +99,6 @@ namespace billproject
 			}
 			return finalBill;
 		}
-		*/
 
 		/// <summary>
 		/// Create a new article

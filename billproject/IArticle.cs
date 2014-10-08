@@ -2,7 +2,7 @@
 
 namespace billproject
 {
-	public interface IArticle<T>
+	public interface IArticle
 	{
 		void CreateArticle(string item, int quantity, double price, Article.typeTaxes Taxes);
 		void AddArticle(Article article);
