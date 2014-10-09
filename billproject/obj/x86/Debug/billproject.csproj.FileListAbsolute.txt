@@ -6,3 +6,5 @@ T:\BillProject\billproject\bin\Debug\Newtonsoft.Json.xml
 T:\BillProject\billproject\obj\x86\Debug\billproject.csprojResolveAssemblyReference.cache
 T:\BillProject\billproject\obj\x86\Debug\billproject.exe
 T:\BillProject\billproject\obj\x86\Debug\billproject.pdb
+T:\BillProject\billproject\obj\x86\Debug\billproject.Form1.resources
+T:\BillProject\billproject\obj\x86\Debug\billproject.csproj.GenerateResource.Cache

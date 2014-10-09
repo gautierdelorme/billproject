@@ -57,5 +57,10 @@
     <Compile Include="StoreBill.cs" />
     <Compile Include="SchoolBill.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
