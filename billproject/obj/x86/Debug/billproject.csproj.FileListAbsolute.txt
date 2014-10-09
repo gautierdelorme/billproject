@@ -1,0 +1,8 @@
+T:\BillProject\billproject\bin\Debug\billproject.exe
+T:\BillProject\billproject\bin\Debug\billproject.pdb
+T:\BillProject\billproject\bin\Debug\Newtonsoft.Json.dll
+T:\BillProject\billproject\bin\Debug\Newtonsoft.Json.pdb
+T:\BillProject\billproject\bin\Debug\Newtonsoft.Json.xml
+T:\BillProject\billproject\obj\x86\Debug\billproject.csprojResolveAssemblyReference.cache
+T:\BillProject\billproject\obj\x86\Debug\billproject.exe
+T:\BillProject\billproject\obj\x86\Debug\billproject.pdb
