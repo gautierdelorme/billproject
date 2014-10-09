@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace billproject
 {
@@ -10,7 +12,10 @@ namespace billproject
 	{
 		public static void Main (string[] args)
 		{
-
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+            /*
 			SchoolBill sb = new SchoolBill (true);
 			sb.CreateArticle("yo",4,23.90,Article.typeTaxes.FP);
 			sb.CreateArticle("yo",16,23.90,Article.typeTaxes.FP);
@@ -25,6 +30,7 @@ namespace billproject
             sb3 = (SchoolBill) ((Bill)sb2+(Bill)sb);
 
 			sb3.PrintArticles ();
+             */
 		}
 	}
 }
