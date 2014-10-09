@@ -8,3 +8,13 @@ T:\BillProject\billproject\obj\x86\Debug\billproject.exe
 T:\BillProject\billproject\obj\x86\Debug\billproject.pdb
 T:\BillProject\billproject\obj\x86\Debug\billproject.Form1.resources
 T:\BillProject\billproject\obj\x86\Debug\billproject.csproj.GenerateResource.Cache
+C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.exe
+C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.pdb
+C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\billproject.exe
+C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\billproject.pdb
+C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\Newtonsoft.Json.dll
+C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\Newtonsoft.Json.xml
+C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.csprojResolveAssemblyReference.cache
+C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.csproj.GenerateResource.Cache
+C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.HomePageForm.resources

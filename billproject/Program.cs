@@ -14,7 +14,7 @@ namespace billproject
 		{
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new HomePageForm());
             /*
 			SchoolBill sb = new SchoolBill (true);
 			sb.CreateArticle("yo",4,23.90,Article.typeTaxes.FP);
