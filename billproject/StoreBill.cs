@@ -9,7 +9,7 @@ namespace billproject
 	public class StoreBill : Bill,IArticle
 	{
 
-		public StoreBill(bool s)
+		public StoreBill(string name, bool s)
 		{
             string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
 
@@ -22,13 +22,14 @@ namespace billproject
 			int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
 
 			Id = id;
+            Name = name;
 			Articles = new List<Article> ();
 
 			if (s)
 				Save ();
 		}
 
-        public StoreBill(List<Article> articles, bool s)
+        public StoreBill(bool s)
         {
             string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
 
@@ -41,6 +42,27 @@ namespace billproject
             int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
 
             Id = id;
+            Name = "name";
+            Articles = new List<Article>();
+
+            if (s)
+                Save();
+        }
+
+        public StoreBill(string name, List<Article> articles, bool s)
+        {
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+
+            int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            Id = id;
+            Name = name;
             Articles = articles;
 
             if (s)
@@ -71,33 +93,55 @@ namespace billproject
 		}
 		
 		protected override Bill Addition (Bill bill) {
-			Bill finalBill;
-			if (!Articles.Any()) {
-				finalBill = bill;
-			} else {
-				finalBill = this;
-				foreach (Article article1 in bill.Articles) {
-					foreach (Article article2 in finalBill.Articles) {
-						if (article1.Item == article2.Item)
-							finalBill.Articles[finalBill.Articles.IndexOf(article2)].Quantity = article2.Quantity + article1.Quantity;
-						else
-							finalBill.Articles.Add (article1);
-					}
-				}
-			}
-			return finalBill;
+            Bill finalBill = new SchoolBill(false);
+            finalBill.Articles = Articles;
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            finalBill.Name = Name + "+" + bill.Name;
+
+            if (!Articles.Any())
+            {
+                finalBill.Articles = bill.Articles;
+            }
+            else
+            {
+                foreach (Article art in bill.Articles)
+                {
+                    if (finalBill.Articles.Exists(x => x.Item == art.Item))
+                        finalBill.Articles[finalBill.Articles.FindIndex(x => x.Item == art.Item)].Quantity += art.Quantity;
+                    else
+                        finalBill.Articles.Add(art);
+                }
+            }
+            return finalBill;
 		}
 
 		protected override Bill Subtraction (Bill bill) {
-			Bill finalBill;
-			finalBill = this;
-			foreach (Article article1 in bill.Articles) {
-				foreach (Article article2 in finalBill.Articles) {
-					if (article1.Item == article2.Item)
-						finalBill.Articles[finalBill.Articles.IndexOf(article2)].Quantity = article2.Quantity - article1.Quantity;
-				}
-			}
-			return finalBill;
+            Bill finalBill = new SchoolBill(false);
+            finalBill.Articles = Articles;
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            finalBill.Name = Name + "-" + bill.Name;
+
+            if (!Articles.Any())
+            {
+                finalBill.Articles = bill.Articles;
+            }
+            else
+            {
+                foreach (Article art in bill.Articles)
+                {
+                    if (finalBill.Articles.Exists(x => x.Item == art.Item))
+                        finalBill.Articles[finalBill.Articles.FindIndex(x => x.Item == art.Item)].Quantity -= art.Quantity;
+                }
+            }
+            return finalBill;
 		}
 
 		/// <summary>

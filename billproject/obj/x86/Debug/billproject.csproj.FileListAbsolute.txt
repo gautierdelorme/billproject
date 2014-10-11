@@ -18,3 +18,13 @@ C:\Users\delormeg\Documents\billproject\billproject\bin\Debug\Newtonsoft.Json.xm
 C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.csprojResolveAssemblyReference.cache
 C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.csproj.GenerateResource.Cache
 C:\Users\delormeg\Documents\billproject\billproject\obj\x86\Debug\billproject.HomePageForm.resources
+T:\caoo\billproject\billproject\obj\x86\Debug\billproject.pdb
+T:\caoo\billproject\billproject\bin\Debug\billproject.exe
+T:\caoo\billproject\billproject\bin\Debug\billproject.pdb
+T:\caoo\billproject\billproject\bin\Debug\Newtonsoft.Json.dll
+T:\caoo\billproject\billproject\bin\Debug\Newtonsoft.Json.pdb
+T:\caoo\billproject\billproject\bin\Debug\Newtonsoft.Json.xml
+T:\caoo\billproject\billproject\obj\x86\Debug\billproject.csprojResolveAssemblyReference.cache
+T:\caoo\billproject\billproject\obj\x86\Debug\billproject.HomePageForm.resources
+T:\caoo\billproject\billproject\obj\x86\Debug\billproject.csproj.GenerateResource.Cache
+T:\caoo\billproject\billproject\obj\x86\Debug\billproject.exe
