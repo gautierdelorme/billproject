@@ -69,6 +69,26 @@ namespace billproject
                 Save();
         }
 
+        public StoreBill(StoreBill antBill, string name, bool s)
+        {
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+
+            int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            Id = id;
+            Name = name;
+            Articles = antBill.Articles;
+
+            if (s)
+                Save();
+        }
+
 		/// <summary>
 		/// Print all bills' articles
 		/// </summary>
@@ -93,14 +113,7 @@ namespace billproject
 		}
 		
 		protected override Bill Addition (Bill bill) {
-            Bill finalBill = new SchoolBill(false);
-            finalBill.Articles = Articles;
-
-            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
-            FileInfo[] files = directory.GetFiles();
-            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
-
-            finalBill.Name = Name + "+" + bill.Name;
+            Bill finalBill = new StoreBill(this, Name + "+" + bill.Name, false);
 
             if (!Articles.Any())
             {
@@ -120,14 +133,7 @@ namespace billproject
 		}
 
 		protected override Bill Subtraction (Bill bill) {
-            Bill finalBill = new SchoolBill(false);
-            finalBill.Articles = Articles;
-
-            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
-            FileInfo[] files = directory.GetFiles();
-            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
-
-            finalBill.Name = Name + "-" + bill.Name;
+            Bill finalBill = new StoreBill(this, Name + "-" + bill.Name, false);
 
             if (!Articles.Any())
             {

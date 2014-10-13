@@ -27,6 +27,17 @@ namespace billproject
 		protected abstract Bill Addition (Bill bill);
 
 		protected abstract Bill Subtraction (Bill bill);
+
+        public override string ToString()
+        {
+            string billstring = "Bill (id : "+Id+") : "+Name+"\n";
+            foreach (Article art in Articles)
+            {
+                billstring += art + "\n";
+            }
+
+            return billstring;
+        }
 	}
 }
 

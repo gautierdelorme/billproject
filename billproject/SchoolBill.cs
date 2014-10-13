@@ -68,6 +68,26 @@ namespace billproject
                 Save();
         }
 
+        public SchoolBill(SchoolBill antBill, string name, bool s ) 
+        {
+            string subPath = (Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
+
+            if (!Directory.Exists(subPath))
+                Directory.CreateDirectory(subPath);
+
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
+            FileInfo[] files = directory.GetFiles();
+
+            int id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
+
+            Id = id;
+            Name = name;
+            Articles = antBill.Articles;
+
+            if (s)
+                Save();
+        }
+
         public override void PrintArticles()
         {
             Console.WriteLine("*************** Articles ***************");
@@ -91,14 +111,7 @@ namespace billproject
 
         protected override Bill Addition(Bill bill)
         {
-            Bill finalBill = new SchoolBill(false);
-            finalBill.Articles = Articles;
-
-            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
-            FileInfo[] files = directory.GetFiles();
-            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
-
-            finalBill.Name = Name + "+" + bill.Name;
+            Bill finalBill = new SchoolBill(this, Name+"+"+bill.Name, false);
 
             if (!Articles.Any())
             {
@@ -110,9 +123,7 @@ namespace billproject
                 {
                     if (finalBill.Articles.Exists(x => x.Item == art.Item))
                     {
-                        Console.WriteLine(finalBill.Articles[finalBill.Articles.FindIndex(x => x.Item == art.Item)].Quantity);
                         finalBill.Articles[finalBill.Articles.FindIndex(x => x.Item == art.Item)].Quantity += art.Quantity;
-                        Console.WriteLine(finalBill.Articles[finalBill.Articles.FindIndex(x => x.Item == art.Item)].Quantity);
                     }
                     else
                         finalBill.Articles.Add(art);
@@ -123,14 +134,7 @@ namespace billproject
 
         protected override Bill Subtraction(Bill bill)
         {
-            Bill finalBill = new SchoolBill(false);
-            finalBill.Articles = Articles;
-
-            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
-            FileInfo[] files = directory.GetFiles();
-            finalBill.Id = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0).Count() + 1;
-
-            finalBill.Name = Name + "-" + bill.Name;
+            Bill finalBill = new SchoolBill(this, Name+"-"+bill.Name, false);
 
             if (!Articles.Any())
             {
