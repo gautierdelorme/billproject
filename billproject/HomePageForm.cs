@@ -13,7 +13,9 @@ namespace billproject
 {
     public partial class HomePageForm : Form
     {
-        private List<Article> Articles = new List<Article>();
+        private SchoolBill scBill = new SchoolBill(false);
+        private StoreBill stBill = new StoreBill(false);
+
         public HomePageForm()
         {
             InitializeComponent();
@@ -119,7 +121,8 @@ namespace billproject
                 labelGenerate.Text = "Bill selected :\n\n" + bill;
                 labelGenerate.Visible = true;
             }
-            else {
+            else
+            {
                 SchoolBill bill = new SchoolBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills1.SelectedItem));
                 labelGenerate.Text = "Bill selected :\n\n" + bill;
@@ -136,7 +139,8 @@ namespace billproject
                 labelGenerate.Text = "Bill selected :\n\n" + bill;
                 labelGenerate.Visible = true;
             }
-            else {
+            else
+            {
                 SchoolBill bill = new SchoolBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills2.SelectedItem));
                 labelGenerate.Text = "Bill selected :\n\n" + bill;
@@ -214,6 +218,7 @@ namespace billproject
             radioButtonStoreTypeCreate.Checked = true;
             textBoxNameBillCreate.Enabled = true;
             groupBoxBillTypeCreate.Enabled = true;
+            labelBillCreated.Text = "";
         }
 
         private void buttonHomePageCreate_Click(object sender, EventArgs e)
@@ -226,16 +231,18 @@ namespace billproject
         {
             textBoxNameBillCreate.Enabled = false;
             groupBoxBillTypeCreate.Enabled = false;
-            if (!Articles.Any())
+            labelBillCreated.Visible = true;
+            if (radioButtonStoreTypeCreate.Checked)
             {
-                if (radioButtonStoreTypeCreate.Checked)
-                {
-                    new StoreBill(textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow", true);
-                }
-                else
-                {
-                    new SchoolBill(textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow", true);
-                }
+                stBill.Name = textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow";
+                stBill.Save();
+                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + stBill;
+            }
+            else
+            {
+                scBill.Name = textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow";
+                scBill.Save();
+                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + scBill;
             }
         }
 
@@ -245,6 +252,41 @@ namespace billproject
             groupBoxBillTypeCreate.Enabled = false;
             groupBoxAddArticleCreate.Visible = true;
             radioButtonTaxesFPAddArticle.Checked = true;
+        }
+
+        private void buttonAddArticleBillCreate_Click(object sender, EventArgs e)
+        {
+            labelBillCreated.Visible = true;
+            Article.typeTaxes typeArt;
+            if (radioButtonTaxesFPAddArticle.Checked)
+            {
+                typeArt = Article.typeTaxes.FP;
+            }
+            else if (radioButtonTaxesFAddArticle.Checked)
+            {
+                typeArt = Article.typeTaxes.F;
+            }
+            else if (radioButtonTaxesPAddArticle.Checked)
+            {
+                typeArt = Article.typeTaxes.P;
+            }
+            else
+            {
+                typeArt = Article.typeTaxes.O;
+            }
+
+            if (radioButtonStoreTypeCreate.Checked)
+            {
+                stBill.CreateArticle(textBoxNameArticleAdd.Text != "" ? textBoxNameArticleAdd.Text : "Unknow", textBoxQuantityArticleAdd.Text != "" ? Convert.ToInt32(textBoxQuantityArticleAdd.Text) : 0, textBoxPriceAddArticle.Text != "" ? Convert.ToDouble(textBoxPriceAddArticle.Text) : 0, typeArt);
+                groupBoxAddArticleCreate.Visible = false;
+                labelBillCreated.Text = "------ Bill creating : ------\n\n" + stBill;
+            }
+            else
+            {
+                scBill.CreateArticle(textBoxNameArticleAdd.Text != "" ? textBoxNameArticleAdd.Text : "Unknow", textBoxQuantityArticleAdd.Text != "" ? Convert.ToInt32(textBoxQuantityArticleAdd.Text) : 0, textBoxPriceAddArticle.Text != "" ? Convert.ToDouble(textBoxPriceAddArticle.Text) : 0, typeArt);
+                groupBoxAddArticleCreate.Visible = false;
+                labelBillCreated.Text = "------ Bill creating : ------\n\n" + scBill;
+            }
         }
     }
 }

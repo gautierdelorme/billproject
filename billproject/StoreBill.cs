@@ -163,10 +163,13 @@ namespace billproject
 		/// Add an article to the bill
 		/// </summary>
 		/// <param name="art"></param>
-		public void AddArticle(Article art)
-		{
-			Articles.Add(art);
-		}
+        public void AddArticle(Article article)
+        {
+            if (!Articles.Exists(x => x.Item == article.Item))
+                Articles.Add(article);
+            else
+                Articles[Articles.FindIndex(x => x.Item == article.Item)].Quantity += article.Quantity;
+        }
 		/// <summary>
 		/// Remove an article from the bill
 		/// </summary>

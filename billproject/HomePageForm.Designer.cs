@@ -54,8 +54,24 @@
             this.showSelectBillLabel = new System.Windows.Forms.Label();
             this.listBoxShowBill = new System.Windows.Forms.ListBox();
             this.panelCreateBill = new System.Windows.Forms.Panel();
+            this.labelBillCreated = new System.Windows.Forms.Label();
             this.groupBoxAddArticleCreate = new System.Windows.Forms.GroupBox();
+            this.buttonAddArticleBillCreate = new System.Windows.Forms.Button();
+            this.groupBoxTaxesAddArticle = new System.Windows.Forms.GroupBox();
+            this.radioButtonTaxesNoneAddArticle = new System.Windows.Forms.RadioButton();
+            this.radioButtonTaxesPAddArticle = new System.Windows.Forms.RadioButton();
+            this.radioButtonTaxesFAddArticle = new System.Windows.Forms.RadioButton();
+            this.radioButtonTaxesFPAddArticle = new System.Windows.Forms.RadioButton();
+            this.textBoxPriceAddArticle = new System.Windows.Forms.TextBox();
+            this.labelAddArticlePrice = new System.Windows.Forms.Label();
+            this.textBoxQuantityArticleAdd = new System.Windows.Forms.TextBox();
+            this.labelAddArticleQuantity = new System.Windows.Forms.Label();
+            this.textBoxNameArticleAdd = new System.Windows.Forms.TextBox();
+            this.labelAddArticleName = new System.Windows.Forms.Label();
             this.groupBoxCreateBill = new System.Windows.Forms.GroupBox();
+            this.labelOrCreate = new System.Windows.Forms.Label();
+            this.buttonSaveBillCreate = new System.Windows.Forms.Button();
+            this.buttonAddArticleCreate = new System.Windows.Forms.Button();
             this.groupBoxBillTypeCreate = new System.Windows.Forms.GroupBox();
             this.radioButtonSchoolTypeCreate = new System.Windows.Forms.RadioButton();
             this.radioButtonStoreTypeCreate = new System.Windows.Forms.RadioButton();
@@ -63,22 +79,6 @@
             this.textBoxNameBillCreate = new System.Windows.Forms.TextBox();
             this.buttonHomePageCreate = new System.Windows.Forms.Button();
             this.panelHomePage = new System.Windows.Forms.Panel();
-            this.buttonAddArticleCreate = new System.Windows.Forms.Button();
-            this.buttonSaveBillCreate = new System.Windows.Forms.Button();
-            this.labelOrCreate = new System.Windows.Forms.Label();
-            this.labelAddArticleName = new System.Windows.Forms.Label();
-            this.textBoxNameArticleAdd = new System.Windows.Forms.TextBox();
-            this.labelAddArticleQuantity = new System.Windows.Forms.Label();
-            this.textBoxQuantityArticleAdd = new System.Windows.Forms.TextBox();
-            this.labelAddArticlePrice = new System.Windows.Forms.Label();
-            this.textBoxPriceAddArticle = new System.Windows.Forms.TextBox();
-            this.groupBoxTaxesAddArticle = new System.Windows.Forms.GroupBox();
-            this.radioButtonTaxesFAddArticle = new System.Windows.Forms.RadioButton();
-            this.radioButtonTaxesFPAddArticle = new System.Windows.Forms.RadioButton();
-            this.radioButtonTaxesPAddArticle = new System.Windows.Forms.RadioButton();
-            this.radioButtonTaxesNoneAddArticle = new System.Windows.Forms.RadioButton();
-            this.buttonAddArticleBillCreate = new System.Windows.Forms.Button();
-            this.labelBillCreated = new System.Windows.Forms.Label();
             this.panelManageBills.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxAddSub.SuspendLayout();
@@ -86,10 +86,10 @@
             this.groupBoxTypeShow.SuspendLayout();
             this.panelCreateBill.SuspendLayout();
             this.groupBoxAddArticleCreate.SuspendLayout();
+            this.groupBoxTaxesAddArticle.SuspendLayout();
             this.groupBoxCreateBill.SuspendLayout();
             this.groupBoxBillTypeCreate.SuspendLayout();
             this.panelHomePage.SuspendLayout();
-            this.groupBoxTaxesAddArticle.SuspendLayout();
             this.SuspendLayout();
             // 
             // manageBillsButton
@@ -371,6 +371,15 @@
             this.panelCreateBill.TabIndex = 10;
             this.panelCreateBill.Visible = false;
             // 
+            // labelBillCreated
+            // 
+            this.labelBillCreated.AutoSize = true;
+            this.labelBillCreated.Location = new System.Drawing.Point(19, 232);
+            this.labelBillCreated.Name = "labelBillCreated";
+            this.labelBillCreated.Size = new System.Drawing.Size(35, 13);
+            this.labelBillCreated.TabIndex = 3;
+            this.labelBillCreated.Text = "label1";
+            // 
             // groupBoxAddArticleCreate
             // 
             this.groupBoxAddArticleCreate.Controls.Add(this.buttonAddArticleBillCreate);
@@ -388,6 +397,121 @@
             this.groupBoxAddArticleCreate.TabStop = false;
             this.groupBoxAddArticleCreate.Text = "Add article";
             // 
+            // buttonAddArticleBillCreate
+            // 
+            this.buttonAddArticleBillCreate.Location = new System.Drawing.Point(403, 26);
+            this.buttonAddArticleBillCreate.Name = "buttonAddArticleBillCreate";
+            this.buttonAddArticleBillCreate.Size = new System.Drawing.Size(122, 43);
+            this.buttonAddArticleBillCreate.TabIndex = 11;
+            this.buttonAddArticleBillCreate.Text = "Add article";
+            this.buttonAddArticleBillCreate.UseVisualStyleBackColor = true;
+            this.buttonAddArticleBillCreate.Click += new System.EventHandler(this.buttonAddArticleBillCreate_Click);
+            // 
+            // groupBoxTaxesAddArticle
+            // 
+            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesNoneAddArticle);
+            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesPAddArticle);
+            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesFAddArticle);
+            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesFPAddArticle);
+            this.groupBoxTaxesAddArticle.Location = new System.Drawing.Point(181, 8);
+            this.groupBoxTaxesAddArticle.Name = "groupBoxTaxesAddArticle";
+            this.groupBoxTaxesAddArticle.Size = new System.Drawing.Size(185, 45);
+            this.groupBoxTaxesAddArticle.TabIndex = 10;
+            this.groupBoxTaxesAddArticle.TabStop = false;
+            this.groupBoxTaxesAddArticle.Text = "Taxes";
+            // 
+            // radioButtonTaxesNoneAddArticle
+            // 
+            this.radioButtonTaxesNoneAddArticle.AutoSize = true;
+            this.radioButtonTaxesNoneAddArticle.Location = new System.Drawing.Point(129, 22);
+            this.radioButtonTaxesNoneAddArticle.Name = "radioButtonTaxesNoneAddArticle";
+            this.radioButtonTaxesNoneAddArticle.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonTaxesNoneAddArticle.TabIndex = 3;
+            this.radioButtonTaxesNoneAddArticle.TabStop = true;
+            this.radioButtonTaxesNoneAddArticle.Text = "None";
+            this.radioButtonTaxesNoneAddArticle.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTaxesPAddArticle
+            // 
+            this.radioButtonTaxesPAddArticle.AutoSize = true;
+            this.radioButtonTaxesPAddArticle.Location = new System.Drawing.Point(91, 22);
+            this.radioButtonTaxesPAddArticle.Name = "radioButtonTaxesPAddArticle";
+            this.radioButtonTaxesPAddArticle.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonTaxesPAddArticle.TabIndex = 2;
+            this.radioButtonTaxesPAddArticle.TabStop = true;
+            this.radioButtonTaxesPAddArticle.Text = "P";
+            this.radioButtonTaxesPAddArticle.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTaxesFAddArticle
+            // 
+            this.radioButtonTaxesFAddArticle.AutoSize = true;
+            this.radioButtonTaxesFAddArticle.Location = new System.Drawing.Point(51, 22);
+            this.radioButtonTaxesFAddArticle.Name = "radioButtonTaxesFAddArticle";
+            this.radioButtonTaxesFAddArticle.Size = new System.Drawing.Size(31, 17);
+            this.radioButtonTaxesFAddArticle.TabIndex = 1;
+            this.radioButtonTaxesFAddArticle.TabStop = true;
+            this.radioButtonTaxesFAddArticle.Text = "F";
+            this.radioButtonTaxesFAddArticle.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTaxesFPAddArticle
+            // 
+            this.radioButtonTaxesFPAddArticle.AutoSize = true;
+            this.radioButtonTaxesFPAddArticle.Location = new System.Drawing.Point(6, 21);
+            this.radioButtonTaxesFPAddArticle.Name = "radioButtonTaxesFPAddArticle";
+            this.radioButtonTaxesFPAddArticle.Size = new System.Drawing.Size(38, 17);
+            this.radioButtonTaxesFPAddArticle.TabIndex = 0;
+            this.radioButtonTaxesFPAddArticle.TabStop = true;
+            this.radioButtonTaxesFPAddArticle.Text = "FP";
+            this.radioButtonTaxesFPAddArticle.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPriceAddArticle
+            // 
+            this.textBoxPriceAddArticle.Location = new System.Drawing.Point(296, 58);
+            this.textBoxPriceAddArticle.Name = "textBoxPriceAddArticle";
+            this.textBoxPriceAddArticle.Size = new System.Drawing.Size(88, 20);
+            this.textBoxPriceAddArticle.TabIndex = 7;
+            // 
+            // labelAddArticlePrice
+            // 
+            this.labelAddArticlePrice.AutoSize = true;
+            this.labelAddArticlePrice.Location = new System.Drawing.Point(180, 62);
+            this.labelAddArticlePrice.Name = "labelAddArticlePrice";
+            this.labelAddArticlePrice.Size = new System.Drawing.Size(119, 13);
+            this.labelAddArticlePrice.TabIndex = 6;
+            this.labelAddArticlePrice.Text = "Price (use comma \' , \' ) :";
+            // 
+            // textBoxQuantityArticleAdd
+            // 
+            this.textBoxQuantityArticleAdd.Location = new System.Drawing.Point(54, 59);
+            this.textBoxQuantityArticleAdd.Name = "textBoxQuantityArticleAdd";
+            this.textBoxQuantityArticleAdd.Size = new System.Drawing.Size(100, 20);
+            this.textBoxQuantityArticleAdd.TabIndex = 5;
+            // 
+            // labelAddArticleQuantity
+            // 
+            this.labelAddArticleQuantity.AutoSize = true;
+            this.labelAddArticleQuantity.Location = new System.Drawing.Point(6, 61);
+            this.labelAddArticleQuantity.Name = "labelAddArticleQuantity";
+            this.labelAddArticleQuantity.Size = new System.Drawing.Size(52, 13);
+            this.labelAddArticleQuantity.TabIndex = 4;
+            this.labelAddArticleQuantity.Text = "Quantity :";
+            // 
+            // textBoxNameArticleAdd
+            // 
+            this.textBoxNameArticleAdd.Location = new System.Drawing.Point(54, 26);
+            this.textBoxNameArticleAdd.Name = "textBoxNameArticleAdd";
+            this.textBoxNameArticleAdd.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNameArticleAdd.TabIndex = 3;
+            // 
+            // labelAddArticleName
+            // 
+            this.labelAddArticleName.AutoSize = true;
+            this.labelAddArticleName.Location = new System.Drawing.Point(6, 27);
+            this.labelAddArticleName.Name = "labelAddArticleName";
+            this.labelAddArticleName.Size = new System.Drawing.Size(41, 13);
+            this.labelAddArticleName.TabIndex = 2;
+            this.labelAddArticleName.Text = "Name :";
+            // 
             // groupBoxCreateBill
             // 
             this.groupBoxCreateBill.Controls.Add(this.labelOrCreate);
@@ -402,6 +526,35 @@
             this.groupBoxCreateBill.TabIndex = 1;
             this.groupBoxCreateBill.TabStop = false;
             this.groupBoxCreateBill.Text = "Create Bill";
+            // 
+            // labelOrCreate
+            // 
+            this.labelOrCreate.AutoSize = true;
+            this.labelOrCreate.Location = new System.Drawing.Point(332, 33);
+            this.labelOrCreate.Name = "labelOrCreate";
+            this.labelOrCreate.Size = new System.Drawing.Size(18, 13);
+            this.labelOrCreate.TabIndex = 12;
+            this.labelOrCreate.Text = "Or";
+            // 
+            // buttonSaveBillCreate
+            // 
+            this.buttonSaveBillCreate.Location = new System.Drawing.Point(356, 14);
+            this.buttonSaveBillCreate.Name = "buttonSaveBillCreate";
+            this.buttonSaveBillCreate.Size = new System.Drawing.Size(70, 24);
+            this.buttonSaveBillCreate.TabIndex = 11;
+            this.buttonSaveBillCreate.Text = "Save Bill";
+            this.buttonSaveBillCreate.UseVisualStyleBackColor = true;
+            this.buttonSaveBillCreate.Click += new System.EventHandler(this.buttonSaveBillCreate_Click);
+            // 
+            // buttonAddArticleCreate
+            // 
+            this.buttonAddArticleCreate.Location = new System.Drawing.Point(356, 42);
+            this.buttonAddArticleCreate.Name = "buttonAddArticleCreate";
+            this.buttonAddArticleCreate.Size = new System.Drawing.Size(73, 22);
+            this.buttonAddArticleCreate.TabIndex = 10;
+            this.buttonAddArticleCreate.Text = "Add article";
+            this.buttonAddArticleCreate.UseVisualStyleBackColor = true;
+            this.buttonAddArticleCreate.Click += new System.EventHandler(this.buttonAddArticleCreate_Click);
             // 
             // groupBoxBillTypeCreate
             // 
@@ -473,158 +626,6 @@
             this.panelHomePage.Size = new System.Drawing.Size(588, 418);
             this.panelHomePage.TabIndex = 1;
             // 
-            // buttonAddArticleCreate
-            // 
-            this.buttonAddArticleCreate.Location = new System.Drawing.Point(356, 42);
-            this.buttonAddArticleCreate.Name = "buttonAddArticleCreate";
-            this.buttonAddArticleCreate.Size = new System.Drawing.Size(73, 22);
-            this.buttonAddArticleCreate.TabIndex = 10;
-            this.buttonAddArticleCreate.Text = "Add article";
-            this.buttonAddArticleCreate.UseVisualStyleBackColor = true;
-            this.buttonAddArticleCreate.Click += new System.EventHandler(this.buttonAddArticleCreate_Click);
-            // 
-            // buttonSaveBillCreate
-            // 
-            this.buttonSaveBillCreate.Location = new System.Drawing.Point(356, 14);
-            this.buttonSaveBillCreate.Name = "buttonSaveBillCreate";
-            this.buttonSaveBillCreate.Size = new System.Drawing.Size(70, 24);
-            this.buttonSaveBillCreate.TabIndex = 11;
-            this.buttonSaveBillCreate.Text = "Save Bill";
-            this.buttonSaveBillCreate.UseVisualStyleBackColor = true;
-            this.buttonSaveBillCreate.Click += new System.EventHandler(this.buttonSaveBillCreate_Click);
-            // 
-            // labelOrCreate
-            // 
-            this.labelOrCreate.AutoSize = true;
-            this.labelOrCreate.Location = new System.Drawing.Point(332, 33);
-            this.labelOrCreate.Name = "labelOrCreate";
-            this.labelOrCreate.Size = new System.Drawing.Size(18, 13);
-            this.labelOrCreate.TabIndex = 12;
-            this.labelOrCreate.Text = "Or";
-            // 
-            // labelAddArticleName
-            // 
-            this.labelAddArticleName.AutoSize = true;
-            this.labelAddArticleName.Location = new System.Drawing.Point(6, 27);
-            this.labelAddArticleName.Name = "labelAddArticleName";
-            this.labelAddArticleName.Size = new System.Drawing.Size(41, 13);
-            this.labelAddArticleName.TabIndex = 2;
-            this.labelAddArticleName.Text = "Name :";
-            // 
-            // textBoxNameArticleAdd
-            // 
-            this.textBoxNameArticleAdd.Location = new System.Drawing.Point(54, 26);
-            this.textBoxNameArticleAdd.Name = "textBoxNameArticleAdd";
-            this.textBoxNameArticleAdd.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNameArticleAdd.TabIndex = 3;
-            // 
-            // labelAddArticleQuantity
-            // 
-            this.labelAddArticleQuantity.AutoSize = true;
-            this.labelAddArticleQuantity.Location = new System.Drawing.Point(6, 61);
-            this.labelAddArticleQuantity.Name = "labelAddArticleQuantity";
-            this.labelAddArticleQuantity.Size = new System.Drawing.Size(52, 13);
-            this.labelAddArticleQuantity.TabIndex = 4;
-            this.labelAddArticleQuantity.Text = "Quantity :";
-            // 
-            // textBoxQuantityArticleAdd
-            // 
-            this.textBoxQuantityArticleAdd.Location = new System.Drawing.Point(54, 59);
-            this.textBoxQuantityArticleAdd.Name = "textBoxQuantityArticleAdd";
-            this.textBoxQuantityArticleAdd.Size = new System.Drawing.Size(100, 20);
-            this.textBoxQuantityArticleAdd.TabIndex = 5;
-            // 
-            // labelAddArticlePrice
-            // 
-            this.labelAddArticlePrice.AutoSize = true;
-            this.labelAddArticlePrice.Location = new System.Drawing.Point(180, 62);
-            this.labelAddArticlePrice.Name = "labelAddArticlePrice";
-            this.labelAddArticlePrice.Size = new System.Drawing.Size(37, 13);
-            this.labelAddArticlePrice.TabIndex = 6;
-            this.labelAddArticlePrice.Text = "Price :";
-            // 
-            // textBoxPriceAddArticle
-            // 
-            this.textBoxPriceAddArticle.Location = new System.Drawing.Point(224, 59);
-            this.textBoxPriceAddArticle.Name = "textBoxPriceAddArticle";
-            this.textBoxPriceAddArticle.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPriceAddArticle.TabIndex = 7;
-            // 
-            // groupBoxTaxesAddArticle
-            // 
-            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesNoneAddArticle);
-            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesPAddArticle);
-            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesFAddArticle);
-            this.groupBoxTaxesAddArticle.Controls.Add(this.radioButtonTaxesFPAddArticle);
-            this.groupBoxTaxesAddArticle.Location = new System.Drawing.Point(181, 8);
-            this.groupBoxTaxesAddArticle.Name = "groupBoxTaxesAddArticle";
-            this.groupBoxTaxesAddArticle.Size = new System.Drawing.Size(185, 45);
-            this.groupBoxTaxesAddArticle.TabIndex = 10;
-            this.groupBoxTaxesAddArticle.TabStop = false;
-            this.groupBoxTaxesAddArticle.Text = "Taxes";
-            // 
-            // radioButtonTaxesFAddArticle
-            // 
-            this.radioButtonTaxesFAddArticle.AutoSize = true;
-            this.radioButtonTaxesFAddArticle.Location = new System.Drawing.Point(51, 22);
-            this.radioButtonTaxesFAddArticle.Name = "radioButtonTaxesFAddArticle";
-            this.radioButtonTaxesFAddArticle.Size = new System.Drawing.Size(31, 17);
-            this.radioButtonTaxesFAddArticle.TabIndex = 1;
-            this.radioButtonTaxesFAddArticle.TabStop = true;
-            this.radioButtonTaxesFAddArticle.Text = "F";
-            this.radioButtonTaxesFAddArticle.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTaxesFPAddArticle
-            // 
-            this.radioButtonTaxesFPAddArticle.AutoSize = true;
-            this.radioButtonTaxesFPAddArticle.Location = new System.Drawing.Point(6, 21);
-            this.radioButtonTaxesFPAddArticle.Name = "radioButtonTaxesFPAddArticle";
-            this.radioButtonTaxesFPAddArticle.Size = new System.Drawing.Size(38, 17);
-            this.radioButtonTaxesFPAddArticle.TabIndex = 0;
-            this.radioButtonTaxesFPAddArticle.TabStop = true;
-            this.radioButtonTaxesFPAddArticle.Text = "FP";
-            this.radioButtonTaxesFPAddArticle.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTaxesPAddArticle
-            // 
-            this.radioButtonTaxesPAddArticle.AutoSize = true;
-            this.radioButtonTaxesPAddArticle.Location = new System.Drawing.Point(91, 22);
-            this.radioButtonTaxesPAddArticle.Name = "radioButtonTaxesPAddArticle";
-            this.radioButtonTaxesPAddArticle.Size = new System.Drawing.Size(32, 17);
-            this.radioButtonTaxesPAddArticle.TabIndex = 2;
-            this.radioButtonTaxesPAddArticle.TabStop = true;
-            this.radioButtonTaxesPAddArticle.Text = "P";
-            this.radioButtonTaxesPAddArticle.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonTaxesNoneAddArticle
-            // 
-            this.radioButtonTaxesNoneAddArticle.AutoSize = true;
-            this.radioButtonTaxesNoneAddArticle.Location = new System.Drawing.Point(129, 22);
-            this.radioButtonTaxesNoneAddArticle.Name = "radioButtonTaxesNoneAddArticle";
-            this.radioButtonTaxesNoneAddArticle.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonTaxesNoneAddArticle.TabIndex = 3;
-            this.radioButtonTaxesNoneAddArticle.TabStop = true;
-            this.radioButtonTaxesNoneAddArticle.Text = "None";
-            this.radioButtonTaxesNoneAddArticle.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddArticleBillCreate
-            // 
-            this.buttonAddArticleBillCreate.Location = new System.Drawing.Point(403, 26);
-            this.buttonAddArticleBillCreate.Name = "buttonAddArticleBillCreate";
-            this.buttonAddArticleBillCreate.Size = new System.Drawing.Size(122, 43);
-            this.buttonAddArticleBillCreate.TabIndex = 11;
-            this.buttonAddArticleBillCreate.Text = "Add article";
-            this.buttonAddArticleBillCreate.UseVisualStyleBackColor = true;
-            // 
-            // labelBillCreated
-            // 
-            this.labelBillCreated.AutoSize = true;
-            this.labelBillCreated.Location = new System.Drawing.Point(19, 232);
-            this.labelBillCreated.Name = "labelBillCreated";
-            this.labelBillCreated.Size = new System.Drawing.Size(35, 13);
-            this.labelBillCreated.TabIndex = 3;
-            this.labelBillCreated.Text = "label1";
-            // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,13 +651,13 @@
             this.panelCreateBill.PerformLayout();
             this.groupBoxAddArticleCreate.ResumeLayout(false);
             this.groupBoxAddArticleCreate.PerformLayout();
+            this.groupBoxTaxesAddArticle.ResumeLayout(false);
+            this.groupBoxTaxesAddArticle.PerformLayout();
             this.groupBoxCreateBill.ResumeLayout(false);
             this.groupBoxCreateBill.PerformLayout();
             this.groupBoxBillTypeCreate.ResumeLayout(false);
             this.groupBoxBillTypeCreate.PerformLayout();
             this.panelHomePage.ResumeLayout(false);
-            this.groupBoxTaxesAddArticle.ResumeLayout(false);
-            this.groupBoxTaxesAddArticle.PerformLayout();
             this.ResumeLayout(false);
 
         }

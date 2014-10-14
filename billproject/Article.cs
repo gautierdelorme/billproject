@@ -39,7 +39,7 @@ namespace billproject
 		public override string ToString()
 		{
 			return "Article : "+Item+", Quantity : "+Quantity+" at "+Price+"$/article with "
-				+Taxes+" taxes ("+TotalAmoutWithoutTaxes()+"$ without taxes and total : "+TotalAmoutWithTaxes()+"$";
+				+Taxes+" taxes ("+TotalAmoutWithoutTaxes()+"$ without taxes and total : "+TotalAmoutWithTaxes()+"$)";
 		}
 	}
 }
