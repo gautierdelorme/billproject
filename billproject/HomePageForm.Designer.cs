@@ -36,7 +36,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButtonSchoolType = new System.Windows.Forms.RadioButton();
             this.radioButtonStoreType = new System.Windows.Forms.RadioButton();
-            this.buttonGenerateBill = new System.Windows.Forms.Button();
             this.groupBoxAddSub = new System.Windows.Forms.GroupBox();
             this.radioButtonSub = new System.Windows.Forms.RadioButton();
             this.radioButtonAdd = new System.Windows.Forms.RadioButton();
@@ -45,6 +44,7 @@
             this.labelBills2 = new System.Windows.Forms.Label();
             this.labelBills1 = new System.Windows.Forms.Label();
             this.homePageButtonManage = new System.Windows.Forms.Button();
+            this.buttonGenerateBill = new System.Windows.Forms.Button();
             this.ShowPanel = new System.Windows.Forms.Panel();
             this.groupBoxTypeShow = new System.Windows.Forms.GroupBox();
             this.radioButtonSchoolShow = new System.Windows.Forms.RadioButton();
@@ -54,7 +54,6 @@
             this.showSelectBillLabel = new System.Windows.Forms.Label();
             this.listBoxShowBill = new System.Windows.Forms.ListBox();
             this.panelCreateBill = new System.Windows.Forms.Panel();
-            this.labelBillCreated = new System.Windows.Forms.Label();
             this.groupBoxAddArticleCreate = new System.Windows.Forms.GroupBox();
             this.buttonAddArticleBillCreate = new System.Windows.Forms.Button();
             this.groupBoxTaxesAddArticle = new System.Windows.Forms.GroupBox();
@@ -68,6 +67,7 @@
             this.labelAddArticleQuantity = new System.Windows.Forms.Label();
             this.textBoxNameArticleAdd = new System.Windows.Forms.TextBox();
             this.labelAddArticleName = new System.Windows.Forms.Label();
+            this.labelBillCreated = new System.Windows.Forms.Label();
             this.groupBoxCreateBill = new System.Windows.Forms.GroupBox();
             this.labelOrCreate = new System.Windows.Forms.Label();
             this.buttonSaveBillCreate = new System.Windows.Forms.Button();
@@ -83,6 +83,15 @@
             this.buttonHomePageBeforeCreate = new System.Windows.Forms.Button();
             this.buttonCreateBillCreate = new System.Windows.Forms.Button();
             this.buttonCopyBillCreate = new System.Windows.Forms.Button();
+            this.panelCopyFromBill = new System.Windows.Forms.Panel();
+            this.groupBoxTypeBillCopy = new System.Windows.Forms.GroupBox();
+            this.radioButtonTypeSchoolCopy = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypeStoreCopy = new System.Windows.Forms.RadioButton();
+            this.labelBillCopy = new System.Windows.Forms.Label();
+            this.labelSelectBillCopy = new System.Windows.Forms.Label();
+            this.listBoxBillCopy = new System.Windows.Forms.ListBox();
+            this.buttonHomePageCopyBill = new System.Windows.Forms.Button();
+            this.buttonCopyBill = new System.Windows.Forms.Button();
             this.panelManageBills.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxAddSub.SuspendLayout();
@@ -95,6 +104,8 @@
             this.groupBoxBillTypeCreate.SuspendLayout();
             this.panelHomePage.SuspendLayout();
             this.panelBeforeCreate.SuspendLayout();
+            this.panelCopyFromBill.SuspendLayout();
+            this.groupBoxTypeBillCopy.SuspendLayout();
             this.SuspendLayout();
             // 
             // manageBillsButton
@@ -131,13 +142,13 @@
             // 
             this.panelManageBills.Controls.Add(this.labelGenerate);
             this.panelManageBills.Controls.Add(this.groupBox1);
-            this.panelManageBills.Controls.Add(this.buttonGenerateBill);
             this.panelManageBills.Controls.Add(this.groupBoxAddSub);
             this.panelManageBills.Controls.Add(this.listBoxBills2);
             this.panelManageBills.Controls.Add(this.listBoxBills1);
             this.panelManageBills.Controls.Add(this.labelBills2);
             this.panelManageBills.Controls.Add(this.labelBills1);
             this.panelManageBills.Controls.Add(this.homePageButtonManage);
+            this.panelManageBills.Controls.Add(this.buttonGenerateBill);
             this.panelManageBills.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManageBills.Location = new System.Drawing.Point(0, 0);
             this.panelManageBills.Name = "panelManageBills";
@@ -188,16 +199,6 @@
             this.radioButtonStoreType.Text = "Store";
             this.radioButtonStoreType.UseVisualStyleBackColor = true;
             this.radioButtonStoreType.CheckedChanged += new System.EventHandler(this.radioButtonStoreType_CheckedChanged);
-            // 
-            // buttonGenerateBill
-            // 
-            this.buttonGenerateBill.Location = new System.Drawing.Point(266, 217);
-            this.buttonGenerateBill.Name = "buttonGenerateBill";
-            this.buttonGenerateBill.Size = new System.Drawing.Size(75, 23);
-            this.buttonGenerateBill.TabIndex = 7;
-            this.buttonGenerateBill.Text = "Generate";
-            this.buttonGenerateBill.UseVisualStyleBackColor = true;
-            this.buttonGenerateBill.Click += new System.EventHandler(this.buttonGenerateBill_Click);
             // 
             // groupBoxAddSub
             // 
@@ -276,6 +277,16 @@
             this.homePageButtonManage.Text = "Home Page";
             this.homePageButtonManage.UseVisualStyleBackColor = true;
             this.homePageButtonManage.Click += new System.EventHandler(this.homePageButtonManage_Click);
+            // 
+            // buttonGenerateBill
+            // 
+            this.buttonGenerateBill.Location = new System.Drawing.Point(266, 217);
+            this.buttonGenerateBill.Name = "buttonGenerateBill";
+            this.buttonGenerateBill.Size = new System.Drawing.Size(75, 23);
+            this.buttonGenerateBill.TabIndex = 7;
+            this.buttonGenerateBill.Text = "Generate";
+            this.buttonGenerateBill.UseVisualStyleBackColor = true;
+            this.buttonGenerateBill.Click += new System.EventHandler(this.buttonGenerateBill_Click);
             // 
             // ShowPanel
             // 
@@ -365,8 +376,8 @@
             // 
             // panelCreateBill
             // 
-            this.panelCreateBill.Controls.Add(this.labelBillCreated);
             this.panelCreateBill.Controls.Add(this.groupBoxAddArticleCreate);
+            this.panelCreateBill.Controls.Add(this.labelBillCreated);
             this.panelCreateBill.Controls.Add(this.groupBoxCreateBill);
             this.panelCreateBill.Controls.Add(this.buttonHomePageCreate);
             this.panelCreateBill.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -375,15 +386,6 @@
             this.panelCreateBill.Size = new System.Drawing.Size(588, 418);
             this.panelCreateBill.TabIndex = 10;
             this.panelCreateBill.Visible = false;
-            // 
-            // labelBillCreated
-            // 
-            this.labelBillCreated.AutoSize = true;
-            this.labelBillCreated.Location = new System.Drawing.Point(19, 232);
-            this.labelBillCreated.Name = "labelBillCreated";
-            this.labelBillCreated.Size = new System.Drawing.Size(35, 13);
-            this.labelBillCreated.TabIndex = 3;
-            this.labelBillCreated.Text = "label1";
             // 
             // groupBoxAddArticleCreate
             // 
@@ -516,6 +518,15 @@
             this.labelAddArticleName.Size = new System.Drawing.Size(41, 13);
             this.labelAddArticleName.TabIndex = 2;
             this.labelAddArticleName.Text = "Name :";
+            // 
+            // labelBillCreated
+            // 
+            this.labelBillCreated.AutoSize = true;
+            this.labelBillCreated.Location = new System.Drawing.Point(19, 232);
+            this.labelBillCreated.Name = "labelBillCreated";
+            this.labelBillCreated.Size = new System.Drawing.Size(35, 13);
+            this.labelBillCreated.TabIndex = 3;
+            this.labelBillCreated.Text = "label1";
             // 
             // groupBoxCreateBill
             // 
@@ -655,7 +666,7 @@
             // 
             // buttonCreateBillCreate
             // 
-            this.buttonCreateBillCreate.Location = new System.Drawing.Point(332, 165);
+            this.buttonCreateBillCreate.Location = new System.Drawing.Point(332, 169);
             this.buttonCreateBillCreate.Name = "buttonCreateBillCreate";
             this.buttonCreateBillCreate.Size = new System.Drawing.Size(98, 27);
             this.buttonCreateBillCreate.TabIndex = 1;
@@ -665,23 +676,122 @@
             // 
             // buttonCopyBillCreate
             // 
-            this.buttonCopyBillCreate.Location = new System.Drawing.Point(56, 167);
+            this.buttonCopyBillCreate.Location = new System.Drawing.Point(70, 169);
             this.buttonCopyBillCreate.Name = "buttonCopyBillCreate";
             this.buttonCopyBillCreate.Size = new System.Drawing.Size(92, 25);
             this.buttonCopyBillCreate.TabIndex = 0;
             this.buttonCopyBillCreate.Text = "Copy from a bill";
             this.buttonCopyBillCreate.UseVisualStyleBackColor = true;
+            this.buttonCopyBillCreate.Click += new System.EventHandler(this.buttonCopyBillCreate_Click);
+            // 
+            // panelCopyFromBill
+            // 
+            this.panelCopyFromBill.Controls.Add(this.buttonCopyBill);
+            this.panelCopyFromBill.Controls.Add(this.groupBoxTypeBillCopy);
+            this.panelCopyFromBill.Controls.Add(this.labelBillCopy);
+            this.panelCopyFromBill.Controls.Add(this.labelSelectBillCopy);
+            this.panelCopyFromBill.Controls.Add(this.listBoxBillCopy);
+            this.panelCopyFromBill.Controls.Add(this.buttonHomePageCopyBill);
+            this.panelCopyFromBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCopyFromBill.Location = new System.Drawing.Point(0, 0);
+            this.panelCopyFromBill.Name = "panelCopyFromBill";
+            this.panelCopyFromBill.Size = new System.Drawing.Size(588, 418);
+            this.panelCopyFromBill.TabIndex = 3;
+            this.panelCopyFromBill.Visible = false;
+            // 
+            // groupBoxTypeBillCopy
+            // 
+            this.groupBoxTypeBillCopy.Controls.Add(this.radioButtonTypeSchoolCopy);
+            this.groupBoxTypeBillCopy.Controls.Add(this.radioButtonTypeStoreCopy);
+            this.groupBoxTypeBillCopy.Location = new System.Drawing.Point(231, 20);
+            this.groupBoxTypeBillCopy.Name = "groupBoxTypeBillCopy";
+            this.groupBoxTypeBillCopy.Size = new System.Drawing.Size(143, 51);
+            this.groupBoxTypeBillCopy.TabIndex = 13;
+            this.groupBoxTypeBillCopy.TabStop = false;
+            this.groupBoxTypeBillCopy.Text = "Bills type";
+            // 
+            // radioButtonTypeSchoolCopy
+            // 
+            this.radioButtonTypeSchoolCopy.AutoSize = true;
+            this.radioButtonTypeSchoolCopy.Location = new System.Drawing.Point(80, 19);
+            this.radioButtonTypeSchoolCopy.Name = "radioButtonTypeSchoolCopy";
+            this.radioButtonTypeSchoolCopy.Size = new System.Drawing.Size(58, 17);
+            this.radioButtonTypeSchoolCopy.TabIndex = 1;
+            this.radioButtonTypeSchoolCopy.TabStop = true;
+            this.radioButtonTypeSchoolCopy.Text = "School";
+            this.radioButtonTypeSchoolCopy.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSchoolCopy.CheckedChanged += new System.EventHandler(this.radioButtonTypeSchoolCopy_CheckedChanged);
+            // 
+            // radioButtonTypeStoreCopy
+            // 
+            this.radioButtonTypeStoreCopy.AutoSize = true;
+            this.radioButtonTypeStoreCopy.Location = new System.Drawing.Point(7, 20);
+            this.radioButtonTypeStoreCopy.Name = "radioButtonTypeStoreCopy";
+            this.radioButtonTypeStoreCopy.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonTypeStoreCopy.TabIndex = 0;
+            this.radioButtonTypeStoreCopy.TabStop = true;
+            this.radioButtonTypeStoreCopy.Text = "Store";
+            this.radioButtonTypeStoreCopy.UseVisualStyleBackColor = true;
+            this.radioButtonTypeStoreCopy.CheckedChanged += new System.EventHandler(this.radioButtonTypeStoreCopy_CheckedChanged);
+            // 
+            // labelBillCopy
+            // 
+            this.labelBillCopy.AutoSize = true;
+            this.labelBillCopy.Location = new System.Drawing.Point(19, 254);
+            this.labelBillCopy.Name = "labelBillCopy";
+            this.labelBillCopy.Size = new System.Drawing.Size(35, 13);
+            this.labelBillCopy.TabIndex = 12;
+            this.labelBillCopy.Text = "label1";
+            // 
+            // labelSelectBillCopy
+            // 
+            this.labelSelectBillCopy.AutoSize = true;
+            this.labelSelectBillCopy.Location = new System.Drawing.Point(272, 90);
+            this.labelSelectBillCopy.Name = "labelSelectBillCopy";
+            this.labelSelectBillCopy.Size = new System.Drawing.Size(61, 13);
+            this.labelSelectBillCopy.TabIndex = 11;
+            this.labelSelectBillCopy.Text = "Select a bill";
+            // 
+            // listBoxBillCopy
+            // 
+            this.listBoxBillCopy.FormattingEnabled = true;
+            this.listBoxBillCopy.Location = new System.Drawing.Point(244, 106);
+            this.listBoxBillCopy.Name = "listBoxBillCopy";
+            this.listBoxBillCopy.Size = new System.Drawing.Size(120, 95);
+            this.listBoxBillCopy.TabIndex = 10;
+            this.listBoxBillCopy.SelectedIndexChanged += new System.EventHandler(this.listBoxBillCopy_SelectedIndexChanged);
+            // 
+            // buttonHomePageCopyBill
+            // 
+            this.buttonHomePageCopyBill.Location = new System.Drawing.Point(22, 11);
+            this.buttonHomePageCopyBill.Name = "buttonHomePageCopyBill";
+            this.buttonHomePageCopyBill.Size = new System.Drawing.Size(75, 23);
+            this.buttonHomePageCopyBill.TabIndex = 0;
+            this.buttonHomePageCopyBill.Text = "Home Page";
+            this.buttonHomePageCopyBill.UseVisualStyleBackColor = true;
+            this.buttonHomePageCopyBill.Click += new System.EventHandler(this.buttonHomePageCopyBill_Click);
+            // 
+            // buttonCopyBill
+            // 
+            this.buttonCopyBill.Location = new System.Drawing.Point(266, 217);
+            this.buttonCopyBill.Name = "buttonCopyBill";
+            this.buttonCopyBill.Size = new System.Drawing.Size(84, 27);
+            this.buttonCopyBill.TabIndex = 14;
+            this.buttonCopyBill.Text = "Copy";
+            this.buttonCopyBill.UseVisualStyleBackColor = true;
+            this.buttonCopyBill.Click += new System.EventHandler(this.buttonCopyBill_Click);
             // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 418);
+            this.Controls.Add(this.panelHomePage);
             this.Controls.Add(this.panelCreateBill);
             this.Controls.Add(this.panelManageBills);
             this.Controls.Add(this.ShowPanel);
+            this.Controls.Add(this.panelCopyFromBill);
             this.Controls.Add(this.panelBeforeCreate);
-            this.Controls.Add(this.panelHomePage);
             this.Name = "HomePageForm";
             this.Text = "Bill project";
             this.panelManageBills.ResumeLayout(false);
@@ -706,6 +816,10 @@
             this.groupBoxBillTypeCreate.PerformLayout();
             this.panelHomePage.ResumeLayout(false);
             this.panelBeforeCreate.ResumeLayout(false);
+            this.panelCopyFromBill.ResumeLayout(false);
+            this.panelCopyFromBill.PerformLayout();
+            this.groupBoxTypeBillCopy.ResumeLayout(false);
+            this.groupBoxTypeBillCopy.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -767,6 +881,15 @@
         private System.Windows.Forms.Button buttonCreateBillCreate;
         private System.Windows.Forms.Button buttonCopyBillCreate;
         private System.Windows.Forms.Button buttonHomePageBeforeCreate;
+        private System.Windows.Forms.Panel panelCopyFromBill;
+        private System.Windows.Forms.Button buttonHomePageCopyBill;
+        private System.Windows.Forms.GroupBox groupBoxTypeBillCopy;
+        private System.Windows.Forms.RadioButton radioButtonTypeSchoolCopy;
+        private System.Windows.Forms.RadioButton radioButtonTypeStoreCopy;
+        private System.Windows.Forms.Label labelBillCopy;
+        private System.Windows.Forms.Label labelSelectBillCopy;
+        private System.Windows.Forms.ListBox listBoxBillCopy;
+        private System.Windows.Forms.Button buttonCopyBill;
 
     }
 }

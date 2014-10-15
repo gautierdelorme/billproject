@@ -85,6 +85,7 @@ namespace billproject
             listBoxBills1.Items.Clear();
             listBoxBills2.Items.Clear();
             labelGenerate.Visible = false;
+            buttonGenerateBill.Enabled = false;
             DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
             FileInfo[] files = directory.GetFiles();
             var idFiles = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0);
@@ -101,6 +102,7 @@ namespace billproject
             listBoxBills1.Items.Clear();
             listBoxBills2.Items.Clear();
             labelGenerate.Visible = false;
+            buttonGenerateBill.Enabled = false;
             DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
             FileInfo[] files = directory.GetFiles();
             var idFiles = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0);
@@ -128,6 +130,11 @@ namespace billproject
                 labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
             }
+
+            if (listBoxBills2.SelectedItem != null)
+            {
+                buttonGenerateBill.Enabled = true;
+            }
         }
 
         private void listBoxBills2_SelectedIndexChanged(object sender, EventArgs e)
@@ -145,6 +152,11 @@ namespace billproject
                 bill.Load(Convert.ToInt32(listBoxBills2.SelectedItem));
                 labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
+            }
+
+            if (listBoxBills1.SelectedItem != null)
+            {
+                buttonGenerateBill.Enabled = true;
             }
         }
 
@@ -213,25 +225,22 @@ namespace billproject
         {
             panelBeforeCreate.Visible = true;
             panelHomePage.Visible = false;
-            groupBoxAddArticleCreate.Visible = false;
-            labelBillCreated.Visible = false;
-            radioButtonStoreTypeCreate.Checked = true;
-            textBoxNameBillCreate.Enabled = true;
-            groupBoxBillTypeCreate.Enabled = true;
-            labelBillCreated.Text = "";
         }
 
         private void buttonHomePageCreate_Click(object sender, EventArgs e)
         {
             panelCreateBill.Visible = false;
             panelHomePage.Visible = true;
+            textBoxNameBillCreate.Text = "";
         }
 
         private void buttonSaveBillCreate_Click(object sender, EventArgs e)
         {
             textBoxNameBillCreate.Enabled = false;
             groupBoxBillTypeCreate.Enabled = false;
-            buttonAddArticleBillCreate.Enabled = false;
+            buttonAddArticleCreate.Enabled = false;
+            buttonSaveBillCreate.Enabled = false;
+            groupBoxAddArticleCreate.Visible = false;
             labelBillCreated.Visible = true;
             if (radioButtonStoreTypeCreate.Checked)
             {
@@ -288,18 +297,119 @@ namespace billproject
                 groupBoxAddArticleCreate.Visible = false;
                 labelBillCreated.Text = "------ Bill creating : ------\n\n" + scBill.PrintArticles();
             }
+            textBoxNameArticleAdd.Text = "";
+            textBoxQuantityArticleAdd.Text = "";
+            textBoxPriceAddArticle.Text = "";
         }
 
         private void buttonCreateBillCreate_Click(object sender, EventArgs e)
         {
             panelCreateBill.Visible = true;
             panelBeforeCreate.Visible = false;
+            buttonAddArticleCreate.Enabled = true;
+            buttonSaveBillCreate.Enabled = true;
+            groupBoxAddArticleCreate.Visible = false;
+            labelBillCreated.Visible = false;
+            radioButtonStoreTypeCreate.Checked = true;
+            textBoxNameBillCreate.Enabled = true;
+            groupBoxBillTypeCreate.Enabled = true;
+            labelBillCreated.Text = "";
         }
 
         private void buttonHomePageBeforeCreate_Click(object sender, EventArgs e)
         {
             panelHomePage.Visible = true;
             panelBeforeCreate.Visible = false;
+        }
+
+        private void buttonCopyBillCreate_Click(object sender, EventArgs e)
+        {
+            panelCopyFromBill.Visible = true;
+            panelBeforeCreate.Visible = false;
+            labelBillCopy.Visible = false;
+            buttonCopyBill.Enabled = false;
+            radioButtonTypeStoreCopy.Checked = true;
+        }
+
+        private void buttonHomePageCopyBill_Click(object sender, EventArgs e)
+        {
+            panelHomePage.Visible = true;
+            panelCopyFromBill.Visible = false;
+        }
+
+        private void radioButtonTypeStoreCopy_CheckedChanged(object sender, EventArgs e)
+        {
+            labelBillCopy.Visible = false;
+            buttonCopyBill.Enabled = false;
+            listBoxBillCopy.Items.Clear();
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"StoreBills"));
+            FileInfo[] files = directory.GetFiles();
+            var idFiles = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0);
+
+            foreach (FileInfo fi in idFiles)
+            {
+                listBoxBillCopy.Items.Add(fi.Name.Split(new char[] { '.' })[0]);
+            }
+        }
+
+        private void radioButtonTypeSchoolCopy_CheckedChanged(object sender, EventArgs e)
+        {
+            labelBillCopy.Visible = false;
+            buttonCopyBill.Enabled = false;
+            listBoxBillCopy.Items.Clear();
+            DirectoryInfo directory = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), @"SchoolBills"));
+            FileInfo[] files = directory.GetFiles();
+            var idFiles = files.Select(f => f).Where(f => (f.Attributes & FileAttributes.Hidden) == 0);
+
+            foreach (FileInfo fi in idFiles)
+            {
+                listBoxBillCopy.Items.Add(fi.Name.Split(new char[] { '.' })[0]);
+            }
+        }
+
+        private void listBoxBillCopy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonCopyBill.Enabled = true;
+            if (radioButtonTypeStoreCopy.Checked)
+            {
+                StoreBill bill = new StoreBill(false);
+                bill.Load(Convert.ToInt32(listBoxBillCopy.SelectedItem));
+                labelBillCopy.Text = "------ Bill selected : ------\n\n" + bill.PrintArticles();
+                labelBillCopy.Visible = true;
+            }
+            else
+            {
+                SchoolBill bill = new SchoolBill(false);
+                bill.Load(Convert.ToInt32(listBoxBillCopy.SelectedItem));
+                labelBillCopy.Text = "------ Bill selected : ------\n\n" + bill.PrintArticles();
+                labelBillCopy.Visible = true;
+            }
+        }
+
+        private void buttonCopyBill_Click(object sender, EventArgs e)
+        {
+            if (radioButtonTypeStoreCopy.Checked)
+            {
+                StoreBill bill = new StoreBill(false);
+                StoreBill bill2 = new StoreBill(false);
+                bill.Load(Convert.ToInt32(listBoxBillCopy.SelectedItem));
+                bill2.CopyFrom(bill);
+                bill2.Save();
+                radioButtonTypeStoreCopy_CheckedChanged(sender, e);
+                labelBillCopy.Text = "------- Bill created ! -------\n\n" + bill2.PrintArticles();
+                labelBillCopy.Visible = true;
+            }
+            else
+            {
+                SchoolBill bill = new SchoolBill(false);
+                SchoolBill bill2 = new SchoolBill(false);
+                bill.Load(Convert.ToInt32(listBoxBillCopy.SelectedItem));
+                bill2.CopyFrom(bill);
+                bill2.Save();
+                radioButtonTypeSchoolCopy_CheckedChanged(sender, e);
+                labelBillCopy.Text = "------- Bill created ! -------\n\n" + bill2.PrintArticles();
+                labelBillCopy.Visible = true;
+            }
         }
     }
 }
