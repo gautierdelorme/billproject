@@ -92,24 +92,31 @@ namespace billproject
 		/// <summary>
 		/// Print all bills' articles
 		/// </summary>
-		public override void PrintArticles()
+		public override string PrintArticles()
 		{
-			Console.WriteLine ("*************** Articles ***************");
+            string finalString = "";
+            finalString += "*******************************\n";
+            finalString += "Bill (id : " + Id + ") : " + Name +"\n";
+            finalString += "*******************************\n\n";
+			finalString += "*************** Articles ***************\n";
 			double totalAmountWithoutTaxes = 0;
 			double totalAmountWithTaxes = 0;
 
 			foreach (Article article in Articles) {
-				Console.WriteLine (article);
+                finalString += article + "\n";
 				totalAmountWithoutTaxes += article.TotalAmoutWithoutTaxes();
 				totalAmountWithTaxes += article.TotalAmoutWithTaxes ();
 			}
-			Console.WriteLine ("Total without taxes : "+ totalAmountWithoutTaxes+"$");
-			Console.WriteLine ("Total with taxes : "+ totalAmountWithTaxes+"$");
+			finalString += "Total without taxes : "+ totalAmountWithoutTaxes+"$\n";
+			finalString += "Total with taxes : "+ totalAmountWithTaxes+"$\n";
+
+            return finalString;
 		}
 
 		public override void CopyFrom(Bill bill)
 		{
 			Articles = bill.Articles;
+            Name = bill.Name;
 		}
 		
 		protected override Bill Addition (Bill bill) {

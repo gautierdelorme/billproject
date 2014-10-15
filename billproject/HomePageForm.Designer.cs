@@ -79,6 +79,10 @@
             this.textBoxNameBillCreate = new System.Windows.Forms.TextBox();
             this.buttonHomePageCreate = new System.Windows.Forms.Button();
             this.panelHomePage = new System.Windows.Forms.Panel();
+            this.panelBeforeCreate = new System.Windows.Forms.Panel();
+            this.buttonHomePageBeforeCreate = new System.Windows.Forms.Button();
+            this.buttonCreateBillCreate = new System.Windows.Forms.Button();
+            this.buttonCopyBillCreate = new System.Windows.Forms.Button();
             this.panelManageBills.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBoxAddSub.SuspendLayout();
@@ -90,6 +94,7 @@
             this.groupBoxCreateBill.SuspendLayout();
             this.groupBoxBillTypeCreate.SuspendLayout();
             this.panelHomePage.SuspendLayout();
+            this.panelBeforeCreate.SuspendLayout();
             this.SuspendLayout();
             // 
             // manageBillsButton
@@ -626,6 +631,47 @@
             this.panelHomePage.Size = new System.Drawing.Size(588, 418);
             this.panelHomePage.TabIndex = 1;
             // 
+            // panelBeforeCreate
+            // 
+            this.panelBeforeCreate.Controls.Add(this.buttonHomePageBeforeCreate);
+            this.panelBeforeCreate.Controls.Add(this.buttonCreateBillCreate);
+            this.panelBeforeCreate.Controls.Add(this.buttonCopyBillCreate);
+            this.panelBeforeCreate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelBeforeCreate.Location = new System.Drawing.Point(0, 0);
+            this.panelBeforeCreate.Name = "panelBeforeCreate";
+            this.panelBeforeCreate.Size = new System.Drawing.Size(588, 418);
+            this.panelBeforeCreate.TabIndex = 3;
+            this.panelBeforeCreate.Visible = false;
+            // 
+            // buttonHomePageBeforeCreate
+            // 
+            this.buttonHomePageBeforeCreate.Location = new System.Drawing.Point(12, 14);
+            this.buttonHomePageBeforeCreate.Name = "buttonHomePageBeforeCreate";
+            this.buttonHomePageBeforeCreate.Size = new System.Drawing.Size(74, 22);
+            this.buttonHomePageBeforeCreate.TabIndex = 2;
+            this.buttonHomePageBeforeCreate.Text = "Home Page";
+            this.buttonHomePageBeforeCreate.UseVisualStyleBackColor = true;
+            this.buttonHomePageBeforeCreate.Click += new System.EventHandler(this.buttonHomePageBeforeCreate_Click);
+            // 
+            // buttonCreateBillCreate
+            // 
+            this.buttonCreateBillCreate.Location = new System.Drawing.Point(332, 165);
+            this.buttonCreateBillCreate.Name = "buttonCreateBillCreate";
+            this.buttonCreateBillCreate.Size = new System.Drawing.Size(98, 27);
+            this.buttonCreateBillCreate.TabIndex = 1;
+            this.buttonCreateBillCreate.Text = "Create a new bill";
+            this.buttonCreateBillCreate.UseVisualStyleBackColor = true;
+            this.buttonCreateBillCreate.Click += new System.EventHandler(this.buttonCreateBillCreate_Click);
+            // 
+            // buttonCopyBillCreate
+            // 
+            this.buttonCopyBillCreate.Location = new System.Drawing.Point(56, 167);
+            this.buttonCopyBillCreate.Name = "buttonCopyBillCreate";
+            this.buttonCopyBillCreate.Size = new System.Drawing.Size(92, 25);
+            this.buttonCopyBillCreate.TabIndex = 0;
+            this.buttonCopyBillCreate.Text = "Copy from a bill";
+            this.buttonCopyBillCreate.UseVisualStyleBackColor = true;
+            // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,9 +680,10 @@
             this.Controls.Add(this.panelCreateBill);
             this.Controls.Add(this.panelManageBills);
             this.Controls.Add(this.ShowPanel);
+            this.Controls.Add(this.panelBeforeCreate);
             this.Controls.Add(this.panelHomePage);
             this.Name = "HomePageForm";
-            this.Text = "Home Page";
+            this.Text = "Bill project";
             this.panelManageBills.ResumeLayout(false);
             this.panelManageBills.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -658,6 +705,7 @@
             this.groupBoxBillTypeCreate.ResumeLayout(false);
             this.groupBoxBillTypeCreate.PerformLayout();
             this.panelHomePage.ResumeLayout(false);
+            this.panelBeforeCreate.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -715,6 +763,10 @@
         private System.Windows.Forms.Button buttonAddArticleBillCreate;
         private System.Windows.Forms.RadioButton radioButtonTaxesNoneAddArticle;
         private System.Windows.Forms.RadioButton radioButtonTaxesPAddArticle;
+        private System.Windows.Forms.Panel panelBeforeCreate;
+        private System.Windows.Forms.Button buttonCreateBillCreate;
+        private System.Windows.Forms.Button buttonCopyBillCreate;
+        private System.Windows.Forms.Button buttonHomePageBeforeCreate;
 
     }
 }

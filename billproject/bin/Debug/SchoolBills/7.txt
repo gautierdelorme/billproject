@@ -1,1 +1,0 @@
-[{"Item":"yoy","Quantity":8,"Price":2.9,"Taxes":2},{"Item":"yo","Quantity":40,"Price":23.9,"Taxes":0},{"Item":"aightttt","Quantity":134,"Price":333.9,"Taxes":1},{"Item":"aight","Quantity":67,"Price":3.9,"Taxes":1}]

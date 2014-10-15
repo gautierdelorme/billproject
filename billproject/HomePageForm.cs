@@ -53,7 +53,7 @@ namespace billproject
                 bill3.Save();
                 radioButtonStoreType_CheckedChanged(sender, e);
 
-                labelGenerate.Text = "------- Bill created ! -------\n\n" + bill3;
+                labelGenerate.Text = "------- Bill created ! -------\n\n" + bill3.PrintArticles();
 
                 labelGenerate.Visible = true;
             }
@@ -74,7 +74,7 @@ namespace billproject
 
                 radioButtonSchoolType_CheckedChanged(sender, e);
 
-                labelGenerate.Text = "------- Bill created ! -------\n\n" + bill3;
+                labelGenerate.Text = "------- Bill created ! -------\n\n" + bill3.PrintArticles();
 
                 labelGenerate.Visible = true;
             }
@@ -118,14 +118,14 @@ namespace billproject
             {
                 StoreBill bill = new StoreBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills1.SelectedItem));
-                labelGenerate.Text = "Bill selected :\n\n" + bill;
+                labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
             }
             else
             {
                 SchoolBill bill = new SchoolBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills1.SelectedItem));
-                labelGenerate.Text = "Bill selected :\n\n" + bill;
+                labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
             }
         }
@@ -136,14 +136,14 @@ namespace billproject
             {
                 StoreBill bill = new StoreBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills2.SelectedItem));
-                labelGenerate.Text = "Bill selected :\n\n" + bill;
+                labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
             }
             else
             {
                 SchoolBill bill = new SchoolBill(false);
                 bill.Load(Convert.ToInt32(listBoxBills2.SelectedItem));
-                labelGenerate.Text = "Bill selected :\n\n" + bill;
+                labelGenerate.Text = "Bill selected :\n\n" + bill.PrintArticles();
                 labelGenerate.Visible = true;
             }
         }
@@ -169,14 +169,14 @@ namespace billproject
             {
                 StoreBill bill = new StoreBill(false);
                 bill.Load(Convert.ToInt32(listBoxShowBill.SelectedItem));
-                labelShowBill.Text = "------ Bill selected : ------\n\n" + bill;
+                labelShowBill.Text = "------ Bill selected : ------\n\n" + bill.PrintArticles();
                 labelShowBill.Visible = true;
             }
             else
             {
                 SchoolBill bill = new SchoolBill(false);
                 bill.Load(Convert.ToInt32(listBoxShowBill.SelectedItem));
-                labelShowBill.Text = "------ Bill selected : ------\n\n" + bill;
+                labelShowBill.Text = "------ Bill selected : ------\n\n" + bill.PrintArticles();
                 labelShowBill.Visible = true;
             }
         }
@@ -211,7 +211,7 @@ namespace billproject
 
         private void createBillButton_Click(object sender, EventArgs e)
         {
-            panelCreateBill.Visible = true;
+            panelBeforeCreate.Visible = true;
             panelHomePage.Visible = false;
             groupBoxAddArticleCreate.Visible = false;
             labelBillCreated.Visible = false;
@@ -231,18 +231,19 @@ namespace billproject
         {
             textBoxNameBillCreate.Enabled = false;
             groupBoxBillTypeCreate.Enabled = false;
+            buttonAddArticleBillCreate.Enabled = false;
             labelBillCreated.Visible = true;
             if (radioButtonStoreTypeCreate.Checked)
             {
                 stBill.Name = textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow";
                 stBill.Save();
-                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + stBill;
+                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + stBill.PrintArticles();
             }
             else
             {
                 scBill.Name = textBoxNameBillCreate.TextLength > 0 ? textBoxNameBillCreate.Text : "Unknow";
                 scBill.Save();
-                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + scBill;
+                labelBillCreated.Text = "------------\n------ Bill saved ! ------\n------------\n\n" + scBill.PrintArticles();
             }
         }
 
@@ -279,14 +280,26 @@ namespace billproject
             {
                 stBill.CreateArticle(textBoxNameArticleAdd.Text != "" ? textBoxNameArticleAdd.Text : "Unknow", textBoxQuantityArticleAdd.Text != "" ? Convert.ToInt32(textBoxQuantityArticleAdd.Text) : 0, textBoxPriceAddArticle.Text != "" ? Convert.ToDouble(textBoxPriceAddArticle.Text) : 0, typeArt);
                 groupBoxAddArticleCreate.Visible = false;
-                labelBillCreated.Text = "------ Bill creating : ------\n\n" + stBill;
+                labelBillCreated.Text = "------ Bill creating : ------\n\n" + stBill.PrintArticles();
             }
             else
             {
                 scBill.CreateArticle(textBoxNameArticleAdd.Text != "" ? textBoxNameArticleAdd.Text : "Unknow", textBoxQuantityArticleAdd.Text != "" ? Convert.ToInt32(textBoxQuantityArticleAdd.Text) : 0, textBoxPriceAddArticle.Text != "" ? Convert.ToDouble(textBoxPriceAddArticle.Text) : 0, typeArt);
                 groupBoxAddArticleCreate.Visible = false;
-                labelBillCreated.Text = "------ Bill creating : ------\n\n" + scBill;
+                labelBillCreated.Text = "------ Bill creating : ------\n\n" + scBill.PrintArticles();
             }
+        }
+
+        private void buttonCreateBillCreate_Click(object sender, EventArgs e)
+        {
+            panelCreateBill.Visible = true;
+            panelBeforeCreate.Visible = false;
+        }
+
+        private void buttonHomePageBeforeCreate_Click(object sender, EventArgs e)
+        {
+            panelHomePage.Visible = true;
+            panelBeforeCreate.Visible = false;
         }
     }
 }

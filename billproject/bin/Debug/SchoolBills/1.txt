@@ -1,1 +1,1 @@
-[{"Item":"yo","Quantity":20,"Price":23.9,"Taxes":0},{"Item":"aight","Quantity":67,"Price":3.9,"Taxes":1}]
+[]
